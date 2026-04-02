@@ -37,6 +37,50 @@ const commands = [
     .setDescription("m.i.a. explains why wavering is not real"),
 
   new SlashCommandBuilder()
+    .setName("miafix")
+    .setDescription("m.i.a. rewrites a bad thought")
+    .addStringOption(option =>
+      option
+        .setName("thought")
+        .setDescription("the thought you want fixed")
+        .setRequired(true)
+    ),
+
+  new SlashCommandBuilder()
+    .setName("miasituation")
+    .setDescription("m.i.a. interprets a situation")
+    .addStringOption(option =>
+      option
+        .setName("text")
+        .setDescription("describe the situation")
+        .setRequired(true)
+    ),
+
+  new SlashCommandBuilder()
+    .setName("miasaveaffirm")
+    .setDescription("save a custom affirmation")
+    .addStringOption(option =>
+      option
+        .setName("text")
+        .setDescription("the affirmation to save")
+        .setRequired(true)
+    ),
+
+  new SlashCommandBuilder()
+    .setName("miamyaffirm")
+    .setDescription("show your saved affirmations"),
+
+  new SlashCommandBuilder()
+    .setName("miadeleteaffirm")
+    .setDescription("delete one saved affirmation by its number")
+    .addIntegerOption(option =>
+      option
+        .setName("number")
+        .setDescription("the number from your affirmation list")
+        .setRequired(true)
+    ),
+
+  new SlashCommandBuilder()
     .setName("miareset")
     .setDescription("reset your m.i.a. memory and usage history"),
 

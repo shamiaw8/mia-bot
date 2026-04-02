@@ -56,13 +56,17 @@ client.on("interactionCreate", async interaction => {
         responseStyle
       });
 
-      await interaction.reply({ content: response });
+      await interaction.reply({
+        content: response,
+        ephemeral: true
+      });
       return;
     }
 
     if (interaction.commandName === "wavering") {
       await interaction.reply({
-        content: buildWaveringResponse()
+        content: buildWaveringResponse(),
+        ephemeral: true
       });
       return;
     }
@@ -71,7 +75,7 @@ client.on("interactionCreate", async interaction => {
       resetUserMemory(interaction.user.id);
 
       await interaction.reply({
-        content: "fine. your history is wiped. try not to use me like a panic button this time.",
+        content: "okay, reset done. fresh slate, pretty mind, less spiraling.",
         ephemeral: true
       });
       return;
@@ -99,7 +103,7 @@ client.on("interactionCreate", async interaction => {
 
     if (!interaction.replied && !interaction.deferred) {
       await interaction.reply({
-        content: "something broke. tragic. check the console.",
+        content: "something broke a little. check the console and try again.",
         ephemeral: true
       });
     }

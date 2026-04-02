@@ -57,9 +57,15 @@ function getOrCreateUserProfile(userId) {
   if (!profileData[userId]) {
     profileData[userId] = {
       favoriteCategory: null,
-      categoryCounts: {}
+      categoryCounts: {},
+      customAffirmations: []
     };
   }
+
+  if (!Array.isArray(profileData[userId].customAffirmations)) {
+    profileData[userId].customAffirmations = [];
+  }
+
   return profileData[userId];
 }
 
@@ -130,16 +136,52 @@ function resetUserMemory(userId) {
 
   profileData[userId] = {
     favoriteCategory: null,
-    categoryCounts: {}
+    categoryCounts: {},
+    customAffirmations: []
   };
 
   saveJson(usageFilePath, usageData);
   saveJson(profileFilePath, profileData);
 }
 
+function addCustomAffirmation(userId, text) {
+  const profile = getOrCreateUserProfile(userId);
+  profile.customAffirmations.push(text);
+  saveJson(profileFilePath, profileData);
+  return profile.customAffirmations;
+}
+
+function getCustomAffirmations(userId) {
+  const profile = getOrCreateUserProfile(userId);
+  return profile.customAffirmations;
+}
+
+function deleteCustomAffirmation(userId, index) {
+  const profile = getOrCreateUserProfile(userId);
+
+  if (index < 0 || index >= profile.customAffirmations.length) {
+    return {
+      success: false,
+      affirmations: profile.customAffirmations
+    };
+  }
+
+  const removed = profile.customAffirmations.splice(index, 1);
+  saveJson(profileFilePath, profileData);
+
+  return {
+    success: true,
+    removed: removed[0],
+    affirmations: profile.customAffirmations
+  };
+}
+
 module.exports = {
   recordUsage,
   getUserUsage,
   getUserProfile,
-  resetUserMemory
+  resetUserMemory,
+  addCustomAffirmation,
+  getCustomAffirmations,
+  deleteCustomAffirmation
 };

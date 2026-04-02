@@ -4,304 +4,240 @@ function randomItem(arr) {
 
 const categories = {
   sp: [
-    "they’re already pulled in. you’re the one acting confused.",
-    "you do not need to beg for attention you already own.",
-    "stop reading silence like rejection. you’re still the prize.",
-    "they were never hard to get. you just got impatient.",
-    "you are not chasing. they are aligning.",
-    "your presence lingers. that’s your real text message.",
-    "they’re not moving on from you. be serious.",
-    "they can feel your energy before they can explain it.",
-    "you don’t audition for love. you get chosen.",
-    "their focus drifts back to you naturally.",
-    "you are unforgettable on accident.",
-    "they keep circling your energy because it feels like home."
+    "they’re still drawn to you. nothing about your value changed.",
+    "you do not need to force attention that already wants to find you.",
+    "silence does not automatically mean rejection.",
+    "you are not chasing. you are allowing things to come together.",
+    "your energy stays with people longer than you think.",
+    "you are easy to remember and hard to replace.",
+    "things can still be moving even when you cannot see every detail.",
+    "you are still the prize, even on emotional days."
   ],
   money: [
-    "money sticks to you because you know how to hold it.",
-    "you are not broke. you are reorganizing the flow.",
-    "your bank account responds well to standards.",
-    "wealth likes people who stop panicking around numbers.",
-    "you always have enough and then some.",
-    "money trusts you more when you stop acting scared of it.",
-    "abundance is your baseline, not a lucky accident.",
-    "financial peace looks better on you than panic ever did.",
-    "your income expands when your identity does.",
-    "wealth grows where standards stay high.",
-    "money returns to people who expect it.",
-    "your reality keeps proving that you are supported."
+    "money responds better when you stay calm and clear.",
+    "you are allowed to feel supported while building more stability.",
+    "your finances can improve without panic running the show.",
+    "abundance grows faster when you stop speaking fear over everything.",
+    "you are becoming more secure, steady, and well-resourced.",
+    "money can come in cleanly and consistently for you.",
+    "you are learning how to hold more, not just ask for more.",
+    "financial peace belongs in your life too."
   ],
   career: [
-    "you are not waiting to be discovered. you are becoming unavoidable.",
-    "people with less talent and less aura do this every day. stand up.",
-    "your career moves the second you move like you belong there.",
-    "opportunities find you because you look expensive and competent.",
-    "your name belongs in rooms you haven’t entered yet.",
-    "your work speaks loudly before you do.",
-    "you are building a reputation, not begging for a chance.",
-    "being booked suits you.",
-    "your talent deserves visibility and structure.",
-    "serious opportunities love serious self-concept.",
-    "people remember your presence and your work.",
-    "your career likes decisive people."
+    "you are becoming more visible, more capable, and more undeniable.",
+    "your work deserves structure and follow-through.",
+    "opportunities meet people who are willing to be seen.",
+    "you do not need to shrink while waiting for your next level.",
+    "your name belongs in bigger rooms too.",
+    "you are building something real, even if it is still unfolding.",
+    "consistency will carry your talent farther.",
+    "your work can speak for you before you say a word."
   ],
   family: [
-    "you do not need chaos to prove a bond is real.",
-    "peace in your relationships is allowed to be normal now.",
-    "stop expecting old patterns to outrank your new standards.",
-    "you can love people without shrinking around them.",
-    "your energy teaches people how to treat you.",
-    "respect comes easier when you stop apologizing for existing.",
-    "you are allowed to be soft and still have boundaries.",
-    "your relationships calm down when you stop feeding old dynamics.",
-    "love does not require self-abandonment.",
-    "your boundaries are structure, not cruelty.",
-    "you are allowed to feel safe with people you love.",
-    "peace is your new family language."
+    "you are allowed to want peace in your relationships.",
+    "love does not require you to abandon your boundaries.",
+    "you can care deeply without carrying everything alone.",
+    "healthier dynamics start with the standards you hold.",
+    "you are allowed to feel safe, respected, and understood.",
+    "peace can become more normal for you now.",
+    "your relationships do not need chaos to feel meaningful.",
+    "you can be soft and still have limits."
   ],
   appearance: [
-    "your face card is offensive at this point.",
-    "you do not need permission to be devastating.",
-    "people notice you before they decide how to feel about it.",
-    "your beauty has range, menace, and precision.",
-    "you don’t need more validation. mirrors already told you.",
-    "you look expensive because your energy is.",
-    "your presence edits the room.",
-    "your features are working overtime in your favor.",
-    "being stared at is not your problem.",
-    "you are visually unfair.",
-    "you wear beauty like a threat.",
-    "your look lands before you even speak."
+    "you are already striking. let yourself believe it more often.",
+    "your beauty lands before you even explain yourself.",
+    "people notice you. that part is not the issue.",
+    "your look is getting sharper because your self-concept is too.",
+    "you carry a lot of presence without trying.",
+    "you look expensive because your energy feels intentional.",
+    "you do not need constant validation to be attractive.",
+    "your features are doing you a lot of favors."
   ],
   detachment: [
-    "detachment is not giving up. it’s finally acting like the prize.",
-    "stop gripping the outcome like it owes you rent.",
-    "let it land. your job is identity, not obsession.",
-    "you’re attached because you keep checking. stop that.",
-    "the result works faster when you stop poking at it.",
-    "relaxed certainty beats desperate effort every time.",
-    "you do not need to hover over what is already yours.",
-    "hold the standard, drop the panic.",
-    "certainty is quiet.",
-    "detachment is self-respect in motion.",
-    "stop petting the problem.",
-    "your power returns the second you unclench."
+    "detachment is really just calm trust in motion.",
+    "you do not need to grip the outcome so tightly.",
+    "things often move best when you stop hovering over them.",
+    "your job is to return to your identity, not monitor every second.",
+    "you can care and still be relaxed.",
+    "letting go of the panic helps you hear yourself again.",
+    "certainty is usually quieter than fear.",
+    "you are safe to release some control here."
   ],
   discipline: [
-    "discipline is just self-respect with a schedule.",
-    "you do not need motivation. you need fewer negotiations.",
-    "stop asking how to feel like doing it. do it hot and annoyed.",
-    "consistency builds results faster than dramatic little mood swings.",
-    "your future is built by boring repetition. tragic, but useful.",
-    "do the thing before your excuses put on makeup.",
-    "you said this mattered. act like it.",
-    "being iconic is mostly maintenance.",
-    "less overthinking. more execution.",
-    "self-trust is built through repetition.",
-    "showing up counts even when it’s not glamorous.",
-    "you are too available for excuses."
+    "discipline gets easier when you stop debating every little action.",
+    "you do not need to feel perfect to stay consistent.",
+    "small repeated effort will take you farther than mood-based motivation.",
+    "you can start messy and still get results.",
+    "self-trust grows when you keep showing up.",
+    "consistency is often simple, even when it is not exciting.",
+    "you said this matters, so let your habits support that.",
+    "you can do the next right thing without a whole performance."
   ],
   socialmedia: [
-    "post it. nobody cares about your fake perfectionism.",
-    "visibility likes bold people, not hidden drafts.",
-    "you are not cringey. you are underposted.",
-    "the algorithm responds to consistency and nerve.",
-    "people cannot obsess over what you refuse to show them.",
-    "post first, tweak later. nobody died.",
-    "attention finds people who act like they can hold it.",
-    "your audience cannot gather around silence.",
-    "hiding is not curation.",
-    "consistency is hotter than perfection.",
-    "you do not need another draft. you need publish.",
-    "stop ghosting your own brand."
+    "your visibility grows when you let yourself be seen more often.",
+    "you do not need to wait until everything feels perfect to post.",
+    "consistency usually beats perfection online.",
+    "your audience cannot connect with what never gets shared.",
+    "posting more often would probably help more than overthinking it.",
+    "you have enough to say right now.",
+    "your brand gets clearer through action, not hiding.",
+    "you can take up space online too."
   ],
   celebrity: [
-    "fame is just repetition plus identity plus nerve.",
-    "being known suits you. stop acting startled.",
-    "your name travels well. let it.",
-    "you do not need to feel ready to be iconic.",
-    "public success belongs to people who can tolerate being seen.",
-    "celebrity starts as self-concept before it becomes optics.",
-    "you were not built for a tiny life.",
-    "recognition finds people who stop apologizing for wanting it.",
-    "your image deserves scale.",
-    "visibility is not vanity. it’s reach.",
-    "your future audience is looking for someone exactly like you.",
-    "famous looks natural on you."
+    "being seen on a bigger scale can actually fit you really well.",
+    "recognition starts with being willing to let people notice you.",
+    "your life does not have to stay small.",
+    "you can want visibility without apologizing for it.",
+    "your image and ideas deserve more reach.",
+    "people connect with confidence they can feel.",
+    "you are allowed to build something iconic.",
+    "your audience can find you faster when you stop dimming yourself."
   ],
   glowup: [
-    "this is not a glow-up. it’s a reveal.",
-    "you were always that hot. now you’re organized about it.",
-    "beauty loves routine, standards, and water. groundbreaking.",
-    "you do not chase pretty. you maintain power.",
-    "your glow-up is getting rude now.",
-    "beauty compounds when your habits do.",
-    "small rituals create violent results over time.",
-    "your maintenance is starting to look expensive.",
-    "you are curating impact, not just aesthetics.",
-    "you look like you take yourself seriously.",
-    "the difference is showing because you kept going.",
-    "your glow-up moves like a quiet threat."
+    "this is less a glow-up and more a return to yourself.",
+    "your habits are starting to show on you in a good way.",
+    "beauty grows where routine and care are consistent.",
+    "small maintenance adds up more than you think.",
+    "you look better when you treat yourself like someone worth caring for.",
+    "your upgrade is happening through repetition.",
+    "you are becoming more polished because you are paying attention.",
+    "the results are building, even if they feel subtle today."
   ],
   body: [
-    "your body listens when you stop speaking to it like an enemy.",
-    "results love repetition, not panic.",
-    "you are getting toned, defined, and stronger because that is the plan.",
-    "stop checking for overnight changes and go finish the routine.",
-    "your body is always responding, even when you’re dramatic about timing.",
-    "your shape is refining because you keep showing up.",
-    "definition comes from standards, not spirals.",
-    "your body likes structure and calm leadership.",
-    "you do not need punishment. you need consistency.",
-    "your body is not resisting you. it’s adapting.",
-    "every repetition counts, even the annoying ones.",
-    "your body is building exactly what you asked for."
+    "your body responds really well to patience and consistency.",
+    "progress usually comes from repetition, not panic.",
+    "you are getting stronger, more defined, and more in sync with yourself.",
+    "your body is listening, even when changes feel gradual.",
+    "you do not need to fight your body to work with it.",
+    "consistency will always do more than spiraling.",
+    "your shape is allowed to refine over time.",
+    "treat your body like something you are on the same team with."
   ],
   hair: [
-    "your hair grows like it has something to prove.",
-    "your length is catching up to your attitude.",
-    "your hair is growing past old limits because you said so.",
-    "length comes easier when you stop stalking every inch.",
-    "your hair is thick, healthy, and committed to the mission.",
-    "every day your hair gets longer, stronger, and harder to ignore.",
-    "your hair is literally obsessed with reaching your goals.",
-    "your crown responds beautifully to consistency.",
-    "your hair loves your routines and rewards them fast.",
-    "healthy growth is your default now.",
-    "your hair keeps choosing expansion.",
-    "your hair behaves like it knows you’re iconic."
+    "your hair is growing, even when you cannot measure every second of it.",
+    "length comes easier when you trust your routine.",
+    "your hair responds beautifully to care and consistency.",
+    "your growth is still happening.",
+    "your crown is doing what it needs to do.",
+    "healthy hair loves patience and support.",
+    "your hair can absolutely keep getting longer, stronger, and prettier.",
+    "you are not stuck at one length forever."
   ],
   morning: [
-    "good morning. act like the version of you who already won.",
-    "do not start your day in lack. that’s ugly.",
-    "today responds to your identity. choose wisely.",
-    "wake up hotter. think cleaner. move faster.",
-    "set the tone before the world tries anything stupid.",
-    "you do not need chaos to feel productive.",
-    "begin like someone who expects things to work out.",
-    "wake up in self-command.",
-    "certainty before scrolling.",
-    "move like the day was built to favor you.",
-    "carry your standards into the sunrise.",
-    "the morning belongs to whoever grabs the narrative first."
+    "start the day by returning to who you are, not what you fear.",
+    "you set the tone more than you think.",
+    "your morning goes smoother when you choose calm first.",
+    "you do not need to begin the day in lack.",
+    "today can still go well for you.",
+    "your first thoughts matter, so be a little kinder with them.",
+    "move through the morning like things can work out in your favor.",
+    "you can choose steadiness before scrolling."
   ],
   night: [
-    "go to sleep like it’s already handled.",
-    "nighttime is not for spiraling. it’s for letting reality catch up.",
-    "stop rehearsing fear before bed. weird hobby.",
-    "sleep in certainty and let the subconscious do its job.",
-    "close the day without begging the universe for crumbs.",
-    "nothing needs your emergency commentary tonight.",
-    "rest is part of manifestation, not a delay.",
-    "release the day without dragging fear into tomorrow.",
-    "you don’t need another sign before sleep.",
-    "peace looks better on you at night.",
-    "tomorrow arrives faster when you stop wrestling tonight.",
-    "bedtime is for certainty, not chaos."
+    "you can let the day end without dragging every fear into tomorrow.",
+    "rest helps more than late-night spiraling ever will.",
+    "nothing needs to be solved in a panic right before sleep.",
+    "you are allowed to close the day gently.",
+    "peace looks good on you at night.",
+    "sleeping in certainty is still productive.",
+    "you can put this down for tonight.",
+    "tomorrow will be easier if you stop wrestling with tonight."
   ],
   realitycheck: [
-    "you are not stuck. you are just checking too much.",
-    "nothing is wrong except your habit of doubting progress.",
-    "the spiral is not intuition. it’s bad discipline.",
-    "stop turning a delay into a tragedy.",
-    "you do not need another sign. you need better posture.",
-    "you are closer than your attitude suggests.",
-    "panic is not perception.",
-    "your fear is loud, not accurate.",
-    "nothing collapsed. you just got theatrical.",
-    "breathe and stop assigning doom to silence.",
-    "you need steadiness, not another dramatic conclusion.",
-    "your problem is mostly checking in a prettier outfit."
+    "nothing may actually be wrong here — you might just be overwhelmed.",
+    "fear can get loud without being accurate.",
+    "a delay does not automatically mean failure.",
+    "you may be checking too much and trusting yourself too little.",
+    "you are probably closer than your nervous system thinks.",
+    "take a breath before you decide this is a disaster.",
+    "you do not need a new conclusion every time you feel triggered.",
+    "calm often shows you the truth faster."
   ],
   delusioncheck: [
-    "good news: the delusion is not the issue. the inconsistency is.",
-    "you’re allowed to believe big. just stop collapsing every six minutes.",
-    "the fantasy works better when your habits match it.",
-    "dream bigger, but stop moving like a side character.",
-    "the vision is correct. your panic is the only off-brand part.",
-    "believe whatever you want. then act like you meant it.",
-    "you do not need smaller dreams. you need a stronger identity.",
-    "keep the vision. lose the wobbling.",
-    "you can want huge things without acting helpless.",
-    "the life you want is not impossible. it just hates inconsistency.",
-    "delusion becomes strategy when you embody it.",
-    "your vision is fine. your waffling is the ugly part."
+    "wanting more is not the problem. staying steady is the real skill.",
+    "your vision is allowed to be big.",
+    "the goal is not too much just because it feels far away today.",
+    "belief works best when your habits support it.",
+    "you can expect a lot without becoming frantic.",
+    "your standards are fine. your consistency just matters too.",
+    "you are not crazy for wanting bigger things.",
+    "the vision gets easier to trust when you keep returning to it calmly."
   ]
 };
 
 const callouts = {
   general: [
-    "you already have your results, so why do you keep checking for help?",
-    "refreshing for reassurance is not a personality trait.",
-    "you’ve asked enough. now believe yourself.",
-    "this is getting clingy. let the result breathe.",
-    "stop checking like the answer changes every six minutes.",
-    "asking again in a different mood is still checking.",
-    "you’re doing a little too much for someone who already gets what they want."
+    "okay, you’re checking again.",
+    "hey, i think you might be looking for reassurance instead of returning to your standard.",
+    "you’ve asked a few times now, so let’s slow this down.",
+    "this feels more like anxiety than a real problem.",
+    "you do not need a brand new answer every five minutes.",
+    "i think you already know what to do here.",
+    "let’s not turn a temporary wobble into a whole storyline."
   ],
   byCategory: {
     sp: [
-      "still spiraling on sp? boring. they’re still drawn to you.",
-      "asking about sp five times in a row is not romance. it’s checking.",
-      "you do not need another sp answer. you need composure."
+      "you’re checking on sp again, which usually means you need grounding more than another answer.",
+      "i know this matters to you, but asking again will not make it move faster.",
+      "let’s come back to your self-concept instead of chasing reassurance."
     ],
     detachment: [
-      "asking for detachment advice repeatedly is the opposite of detachment.",
-      "you cannot cling to detachment. do you hear yourself?",
-      "this category should not be your emotional support category."
+      "if you keep checking whether you’re detached, that’s usually your clue to pause.",
+      "you do not need to perform detachment perfectly.",
+      "let’s make this simpler: breathe, reset, and come back to yourself."
     ],
     hair: [
-      "your hair is still growing. stop interrogating it.",
-      "checking every twelve seconds does not make it grow faster.",
-      "put the obsession down and moisturize."
+      "your hair is still growing. you do not need to monitor it every second.",
+      "checking constantly can make you feel worse, not help more.",
+      "trust your routine a little more here."
     ],
     body: [
-      "your body responds to consistency, not repeated bot visits.",
-      "stop asking and go finish the routine.",
-      "you do not need a new answer. you need another set."
+      "your body is still responding, even if you feel impatient today.",
+      "you probably need consistency more than another pep talk right now.",
+      "let’s bring this back to the routine."
     ],
     socialmedia: [
-      "the post is still sitting in drafts, isn’t it?",
-      "asking about social media again instead of posting is very transparent.",
-      "open the app and hit post. revolutionary."
+      "i think you might be overthinking posting again.",
+      "your content probably needs action more than another round of stress.",
+      "you can post without over-polishing every detail."
     ],
     realitycheck: [
-      "you already got the reality check. now apply it.",
-      "another reality check? stand up.",
-      "the situation did not get more tragic since the last command."
+      "you already know the answer underneath the panic.",
+      "let’s not feed the spiral more than necessary.",
+      "take this as your sign to ground yourself, not dig deeper."
     ]
   }
 };
 
 const reassuranceClosers = [
-  "you’re fine.",
+  "you’re okay.",
   "it’s still working.",
-  "nothing is going wrong.",
+  "nothing is ruined.",
   "your result is still yours.",
-  "you didn’t lose anything.",
-  "reality is still catching up.",
-  "calm down. it’s handled.",
-  "relax. it’s done."
+  "you are still on track.",
+  "take a breath. it’s handled.",
+  "you did not lose progress.",
+  "things can still move in your favor."
 ];
 
 const modeOpeners = {
   embody: [
     "embody this:",
     "move like this:",
-    "this is who you are now:",
-    "the version of you with the result does this:"
+    "try this version of you:",
+    "the version of you with the result acts like this:"
   ],
   loop: [
     "loop this:",
-    "repeat this until it lands:",
-    "here. use this loop:",
-    "say this like you mean it:"
+    "repeat this:",
+    "use this affirmation:",
+    "say this back to yourself:"
   ],
   dragme: [
-    "since we’re being honest:",
-    "here’s the problem:",
-    "let me simplify this mess:",
-    "bluntly:"
+    "okay, honest moment:",
+    "here’s the loving truth:",
+    "let’s be real for a second:",
+    "gentle call-out:"
   ],
   script: [
     "script this:",
@@ -310,257 +246,257 @@ const modeOpeners = {
     "copy this:"
   ],
   oracle: [
-    "the reading:",
-    "the truth underneath the drama:",
-    "from the dark little altar of certainty:",
-    "oracle says:"
+    "little intuitive read:",
+    "here’s the deeper truth:",
+    "oracle mode says:",
+    "underneath the noise:"
   ],
   receipts: [
     "receipts:",
-    "here’s what you keep ignoring:",
-    "evidence for your dramatic little brain:",
-    "let’s review the obvious:"
+    "here’s what you may be overlooking:",
+    "let’s look at the evidence:",
+    "important reminder:"
   ],
   antispiral: [
-    "anti-spiral order:",
-    "enough. do this instead:",
-    "interrupting the nonsense:",
-    "spiral blocked:"
+    "anti-spiral reset:",
+    "pause here:",
+    "do this instead:",
+    "reset the energy like this:"
   ],
   routine: [
-    "your move:",
-    "routine order:",
-    "do this next:",
-    "simple. follow this:"
+    "your next steps:",
+    "keep it simple:",
+    "try this routine:",
+    "do this next:"
   ],
   villain: [
     "villain mode:",
-    "now say it with menace:",
-    "the dangerous version sounds like this:",
-    "dark little reminder:"
+    "confident reminder:",
+    "say it like you mean it:",
+    "power move:"
   ]
 };
 
 const modeBuilders = {
   embody: {
     sp: [
-      "the version of you who is already chosen does not stalk silence. they assume devotion and go live beautifully.",
-      "the version of you with the relationship moves like they are remembered, prioritized, and pursued.",
-      "the version of you who is already loved does not beg. they receive."
+      "the version of you who already feels chosen does not chase every little sign. they trust the connection and keep living.",
+      "the version of you with the relationship moves like they are remembered, wanted, and prioritized.",
+      "the version of you who feels loved does not beg for proof all day."
     ],
     money: [
-      "the version of you with money checks in calmly, pays things cleanly, and expects overflow.",
-      "the version of you who is financially secure moves like support is normal.",
-      "the wealthy version of you treats money like a tool, not a threat."
+      "the version of you with money handles it calmly, clearly, and with better standards.",
+      "the financially secure version of you expects support and makes wise moves with it.",
+      "the version of you with abundance treats money like a normal part of life, not a crisis."
     ],
     career: [
-      "the version of you with the career sends the email, posts the work, and stops hiding.",
-      "the booked version of you treats visibility like a job requirement, not a personal attack.",
-      "the successful version of you produces before they panic."
+      "the version of you with the career posts the work, follows up, and lets themselves be seen.",
+      "the successful version of you does not hide behind perfectionism.",
+      "the booked version of you moves like their work deserves attention."
     ],
     default: [
-      "the version of you with the result is calmer, cleaner, and less available for nonsense.",
-      "the version of you who already has it does not wobble this much.",
-      "the real shift is acting like your desire already knows where to find you."
+      "the version of you with the result is steadier, softer, and more self-led.",
+      "the version of you who already has it trusts themselves more than the spiral.",
+      "the shift is usually in how you carry yourself before anything else."
     ]
   },
 
   loop: {
     sp: [
-      "i am always chosen, prioritized, pursued, and remembered.",
-      "they always return focused on me.",
-      "i do not chase. i am naturally obsessed over."
+      "i am always chosen, loved, and remembered.",
+      "what is meant for me stays drawn to me.",
+      "i do not chase love. i allow it."
     ],
     money: [
-      "money comes to me, stays with me, and grows around me.",
-      "i am financially secure, supported, and increasing.",
-      "my reality always makes room for more money."
+      "money supports me more every day.",
+      "i am financially secure, steady, and increasing.",
+      "money flows to me and stays with me well."
     ],
     career: [
-      "my work is seen, valued, and paid well.",
-      "opportunities find me fast and naturally.",
-      "my name belongs in powerful rooms."
+      "my work is seen, valued, and well received.",
+      "opportunities find me naturally.",
+      "my name belongs in bigger rooms."
     ],
     hair: [
-      "my hair grows fast, long, healthy, and beautifully every day.",
-      "my hair is obsessed with reaching my goals.",
-      "my hair gets longer, stronger, and prettier daily."
+      "my hair grows long, healthy, and beautifully every day.",
+      "my hair responds well to everything i do for it.",
+      "my hair gets stronger and longer with ease."
     ],
     body: [
-      "my body is toned, defined, strong, and responsive.",
-      "my body changes quickly and beautifully in my favor.",
-      "my body loves consistency and rewards it fast."
+      "my body responds beautifully to consistency.",
+      "my body is strong, defined, and getting better every day.",
+      "my body works with me, not against me."
     ],
     default: [
-      "everything is always working out for me.",
-      "i get what i want naturally and consistently.",
-      "my reality moves in my favor fast."
+      "everything is still working in my favor.",
+      "i am steady, supported, and on track.",
+      "my reality responds to the version of me i keep returning to."
     ]
   },
 
   dragme: {
     sp: [
-      "you keep checking because doubt has better access to you than certainty. fix that.",
-      "you’re acting like attention is rare. embarrassing. you’re the standard.",
-      "your problem is not sp. it’s your addiction to monitoring."
+      "you may be reading too much into every tiny shift. come back to your worth first.",
+      "you do not need to monitor this so closely to be chosen.",
+      "the more you trust yourself here, the easier this gets."
     ],
     money: [
-      "panic is not a budgeting strategy.",
-      "you cannot affirm wealth and then romance scarcity all day.",
-      "money does not trust people who act terrified of it."
+      "fear is making this louder than it needs to be.",
+      "you need calm structure here more than panic.",
+      "money responds better when you lead with steadiness."
     ],
     discipline: [
-      "your habits are weak because you keep negotiating with yourself.",
-      "you do not need a new routine every three business days.",
-      "stop performing productivity and actually do the task."
+      "you may be overcomplicating something that really needs repetition.",
+      "you do not need a perfect mood to follow through.",
+      "start smaller if needed, but do start."
     ],
     default: [
-      "you are not confused. you are checking too much and calling it intuition.",
-      "the issue is not the desire. it’s the wobbling.",
-      "you keep asking for certainty while feeding panic."
+      "you might be trusting your nerves more than your standard.",
+      "this looks more like a wobble than a real emergency.",
+      "come back to what you know instead of feeding the panic."
     ]
   },
 
   script: {
     sp: [
-      "of course i’m always chosen. i naturally take up space in their mind, heart, and attention. i don’t chase affection because affection comes to me.",
-      "i am the easiest person to love, prioritize, and pursue. our connection keeps deepening naturally because i am unforgettable.",
-      "everything about me invites devotion. i am always the one they come back to."
+      "of course i am always remembered, prioritized, and chosen. i do not need to chase what is already drawn to me. i move through life knowing i am deeply wanted and naturally valued.",
+      "i am easy to love, easy to prioritize, and impossible to forget. i trust what is unfolding for me because i know my presence leaves a lasting impression.",
+      "everything about me supports love, closeness, and devotion. i let myself relax into being chosen."
     ],
     money: [
-      "money is safe with me and i am safe with money. i always have more than enough, and financial support keeps finding me in expected and unexpected ways.",
-      "i am becoming more stable, more secure, and more abundant every day. my income, savings, and standards are all increasing together.",
-      "wealth fits me naturally. i am fully available for overflow."
+      "money is becoming a more peaceful and supportive part of my life. i handle it with more calm, more wisdom, and more confidence every day. i am financially supported and steadily expanding what i can hold.",
+      "i am building a life that feels secure, abundant, and well-managed. money comes to me in clean ways, stays with me well, and helps me create more freedom.",
+      "i trust myself to grow my finances with consistency, clarity, and better standards."
     ],
     hair: [
-      "my hair grows quickly, beautifully, and continuously. every day my length increases, my ends stay strong, and my hair keeps proving me right.",
-      "my hair is healthy, thriving, and committed to reaching every goal i set for it. growth is my default now.",
-      "my crown expands easily. my hair loves me back through length, softness, and visible progress."
+      "my hair is healthy, supported, and always growing. every day it becomes longer, stronger, and more beautiful. my routines are working, and my hair responds well to the care i give it.",
+      "my crown keeps thriving under my attention and consistency. i trust the process of my hair growth because it is already happening.",
+      "my hair loves everything i do for it, and the results keep showing."
     ],
     default: [
-      "everything in my reality is reorganizing around the version of me who already has it all. i do not need to force outcomes because my identity naturally creates them.",
-      "i hold my standards without panic. i move through the day as the version of me who is already chosen, supported, attractive, and successful.",
-      "my reality responds to who i am being, and i am being the version of me who gets exactly what they want."
+      "everything in my reality is responding to the version of me that feels grounded, supported, and certain. i do not need to panic to create movement. i return to my standard and let reality catch up.",
+      "i hold my standards with more calm now. i trust what i am building, and i allow things to unfold in my favor.",
+      "my identity is becoming steadier, and my reality reflects that more every day."
     ]
   },
 
   oracle: {
     sp: [
-      "the bond is not fragile. your nervous system is just loud.",
-      "what is meant for your field keeps circling until you let it land.",
-      "desire recognizes its owner. stop acting like it got lost."
+      "the connection does not become fragile just because your emotions got loud for a moment.",
+      "what belongs in your field will not be pushed away by one anxious night.",
+      "your desire is not lost. you just need to return to yourself."
     ],
     money: [
-      "wealth enters through the door certainty leaves open.",
-      "money moves fastest where fear is no longer worshipped.",
-      "support expands around the identity that expects to be held."
+      "support often arrives more easily when fear is no longer steering.",
+      "wealth grows best where trust and structure meet.",
+      "money tends to follow the self that expects to be supported."
     ],
     celebrity: [
-      "visibility waits for the self who can hold witness without flinching.",
-      "the audience forms around identity before it forms around output.",
-      "fame begins as energetic permission."
+      "visibility begins with the willingness to let yourself be witnessed.",
+      "the audience usually gathers around the version of you that feels safe to be seen.",
+      "recognition follows the self that stops dimming."
     ],
     default: [
-      "reality follows the self you stabilize in, not the mood you panic in.",
-      "the outcome is less delayed than your trust is inconsistent.",
-      "what you call waiting is often just embodiment catching up."
+      "reality responds to your steadier identity more than your temporary mood.",
+      "what feels delayed may simply be catching up to your consistency.",
+      "the answer is often simpler than the spiral makes it seem."
     ]
   },
 
   receipts: {
     sp: [
-      "you are still thinking about them because the connection matters, but that does not mean it is gone. your attention proves desire, not failure.",
-      "you keep returning to the same person because your mind knows the story is unfinished, not impossible.",
-      "if you were truly forgotten, you would not feel this much movement every time you calm down."
+      "you still care, you are still focused, and you are still returning to the standard. that already matters.",
+      "the fact that you keep coming back to the desire means it still has life in your story.",
+      "not seeing everything at once does not mean nothing is happening."
     ],
     money: [
-      "you have survived every money phase so far, which means support has never actually left you.",
-      "you keep finding ways through, which means your life already has a pattern of provision.",
-      "the fact that you care about money differently now is already evidence of identity change."
+      "you have made it through every financial season so far. that is evidence of support already.",
+      "you are paying more attention to stability now, which means change is already happening.",
+      "every better decision you make around money counts."
     ],
     glowup: [
-      "you are already more aware, more intentional, and more disciplined than before. that counts.",
-      "your standards have risen, which means your results are already in motion.",
-      "you notice more because you are paying attention now, not because nothing is changing."
+      "you are already more intentional than before, and that does show.",
+      "your standards have risen, and your habits are starting to match them.",
+      "small improvements are still real improvements."
     ],
     default: [
-      "you are more self-aware than before, which means the identity shift already started.",
-      "you have already survived versions of this fear and still moved forward.",
-      "the fact that you keep returning to the standard means the standard is sticking."
+      "you are more self-aware than before, and that is part of the shift.",
+      "you keep coming back to your standard, which means it is getting stronger.",
+      "progress does not disappear just because you had a hard moment."
     ]
   },
 
   antispiral: {
     sp: [
-      "put the phone down. stop checking the 3d. breathe once and return to the version of you who is already wanted.",
-      "nothing changed except your cortisol. leave the situation alone for an hour and act chosen.",
-      "silence is not rejection. stop assigning meaning and go do something that reminds you who you are."
+      "put the phone down, take one deep breath, and come back to your own energy.",
+      "nothing needs to be solved this second. step away and return to your standard.",
+      "do not let one anxious thought turn into a whole story."
     ],
     night: [
-      "close the app, drink water, and stop narrating doom into the dark.",
-      "you are tired, not psychic. go to sleep.",
-      "bedtime is not for detective work. it’s for certainty."
+      "close the app, drink some water, and let your mind settle.",
+      "you are probably tired, not doomed.",
+      "bedtime is for rest, not detective work."
     ],
     realitycheck: [
-      "your fear is having a costume party as logic. ignore it.",
-      "this is a checking episode, not a collapse.",
-      "stop asking for more proof while actively disturbing your own peace."
+      "this may be anxiety talking louder than truth.",
+      "pause before you decide this means something terrible.",
+      "you do not need to dig for proof while you are overwhelmed."
     ],
     default: [
-      "step away from the obsession, unclench your jaw, and return to your identity.",
-      "nothing is ruined. you are overstimulated and dramatic right now.",
-      "pause the checking. the outcome did not disappear because your mood twitched."
+      "step away from the checking for a minute and come back to yourself.",
+      "nothing is ruined. you are just activated right now.",
+      "pause, breathe, and let the moment pass before you make it mean too much."
     ]
   },
 
   routine: {
     glowup: [
-      "drink water, moisturize, stretch, and stop speaking to yourself like an afterthought.",
-      "do your maintenance, fix your posture, and move like you expect to be looked at.",
-      "one beauty task, one body task, one mindset task. daily. no speeches."
+      "drink water, do one beauty task, and speak to yourself with more intention today.",
+      "choose one maintenance task, one body task, and one mindset task. keep it simple.",
+      "do the basics well and let them build."
     ],
     discipline: [
-      "pick one task, finish it, and do not reward yourself for almost starting.",
-      "set a timer, begin ugly, and let consistency do the seduction.",
-      "make the checklist shorter and your excuses shorter too."
+      "pick one task, finish it, and let that be enough for now.",
+      "set a timer, start small, and focus on follow-through over perfection.",
+      "keep the routine simple enough that you will actually repeat it."
     ],
     socialmedia: [
-      "post one thing, engage for ten minutes, and stop disappearing.",
-      "choose one idea, make it, publish it, leave it alone.",
-      "document something today instead of waiting to become more perfect."
+      "post one thing, engage a little, and stop over-editing everything.",
+      "choose one idea, make it, and share it before you can overthink it.",
+      "show up today in a way your audience can actually see."
     ],
     default: [
-      "one mindset action, one body action, one practical action. that’s enough. repeat tomorrow.",
-      "keep it simple: decide, act, stop checking.",
-      "do one thing that proves your identity and leave the rest alone."
+      "do one mindset action, one practical action, and one self-care action.",
+      "keep it simple: decide, act, then stop circling it.",
+      "choose the next right step and let that carry the day."
     ]
   },
 
   villain: {
     sp: [
-      "they orbit me because my energy leaves teeth marks.",
-      "i do not chase devotion. devotion hunts for me.",
-      "my presence lingers like perfume and a bad decision."
+      "i do not chase love. i carry the kind of energy people come back to.",
+      "my presence lingers, and that works in my favor.",
+      "i am too memorable to be overlooked for long."
     ],
     money: [
-      "money gathers around me like it knows better than to leave.",
-      "wealth fits me like black leather and good lighting.",
-      "my standards are expensive and reality pays up."
+      "money looks good around me.",
+      "i am learning to hold wealth with confidence and style.",
+      "my standards invite a better financial reality."
     ],
     appearance: [
-      "i look like consequences and good taste.",
-      "my beauty arrives first and my silence finishes the job.",
-      "i wear my face like a loaded weapon."
+      "my beauty speaks clearly before i ever need to.",
+      "i carry myself like i know exactly who i am.",
+      "my presence does a lot of the work for me."
     ],
     celebrity: [
-      "my image scales because it was never meant to stay small.",
-      "attention behaves around me because it knows i can hold it.",
-      "fame looks less like luck and more like obedience in my field."
+      "i am growing into visibility that actually fits me.",
+      "attention feels safer when i remember i can hold it.",
+      "my image is allowed to expand."
     ],
     default: [
-      "reality reorganizes itself when i stop acting like a civilian.",
-      "i move like a final boss in lip gloss.",
-      "my identity lands like a threat and a promise."
+      "i move like someone who trusts their own energy.",
+      "my identity is stronger than one emotional moment.",
+      "i carry myself like things can still go my way."
     ]
   }
 };
@@ -633,10 +569,10 @@ const modes = [
 
 function buildWaveringResponse() {
   const lines = [
-    "wavering is not real in the dramatic way you think it is. one anxious moment does not cancel a dominant identity.",
-    "wavering is just a temporary reaction, not a final decision. reality responds to the identity you return to most.",
-    "you do not lose your desire because you had a human moment. the problem is only when you start worshipping the wobble.",
-    "one spiral does not undo the standard. stop romanticizing setbacks and return to the version of you who already gets what they want."
+    "wavering is not the disaster people make it out to be. one emotional moment does not cancel your dominant identity.",
+    "wavering is usually just a temporary reaction, not a final outcome. what matters most is what you return to.",
+    "you do not lose progress because you had a human moment. the key is not building a home inside the wobble.",
+    "one spiral does not undo the standard. come back to yourself and keep moving."
   ];
 
   return randomItem(lines);

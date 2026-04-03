@@ -49,9 +49,15 @@ function getOrCreateUserUsage(userId) {
       lastTopic: null,
       sameTopicStreak: 0,
       recentUses: [],
-      spamCalloutCount: 0
+      spamCalloutCount: 0,
+      spamByTopic: {}
     };
   }
+
+  if (!usageData[userId].spamByTopic) {
+    usageData[userId].spamByTopic = {};
+  }
+
   return usageData[userId];
 }
 
@@ -66,6 +72,10 @@ function getOrCreateUserProfile(userId) {
 
   if (!Array.isArray(profileData[userId].customAffirmations)) {
     profileData[userId].customAffirmations = [];
+  }
+
+  if (!profileData[userId].topicCounts) {
+    profileData[userId].topicCounts = {};
   }
 
   return profileData[userId];
@@ -117,21 +127,29 @@ function recordUsage(userId, category, topic) {
     sameTopicStreak: userUsage.sameTopicStreak,
     recentUsesInTenMinutes: userUsage.recentUses.length,
     favoriteTopic: userProfile.favoriteTopic,
-    spamCalloutCount: userUsage.spamCalloutCount
+    lastTopic: userUsage.lastTopic,
+    spamCalloutCount: userUsage.spamCalloutCount,
+    spamByTopicCount: userUsage.spamByTopic[topic] || 0
   };
 }
 
-function incrementSpamCallout(userId) {
+function recordSpamCallout(userId, topic) {
   const userUsage = getOrCreateUserUsage(userId);
-  userUsage.spamCalloutCount += 1;
-  saveJson(usageFilePath, usageData);
-  return userUsage.spamCalloutCount;
-}
 
-function clearSpamPressure(userId) {
-  const userUsage = getOrCreateUserUsage(userId);
-  userUsage.spamCalloutCount = 0;
+  userUsage.spamCalloutCount += 1;
+
+  if (!userUsage.spamByTopic[topic]) {
+    userUsage.spamByTopic[topic] = 0;
+  }
+
+  userUsage.spamByTopic[topic] += 1;
+
   saveJson(usageFilePath, usageData);
+
+  return {
+    spamCalloutCount: userUsage.spamCalloutCount,
+    spamByTopicCount: userUsage.spamByTopic[topic]
+  };
 }
 
 function getUserUsage(userId) {
@@ -150,7 +168,8 @@ function resetUserMemory(userId) {
     lastTopic: null,
     sameTopicStreak: 0,
     recentUses: [],
-    spamCalloutCount: 0
+    spamCalloutCount: 0,
+    spamByTopic: {}
   };
 
   profileData[userId] = {
@@ -197,8 +216,7 @@ function deleteCustomAffirmation(userId, index) {
 
 module.exports = {
   recordUsage,
-  incrementSpamCallout,
-  clearSpamPressure,
+  recordSpamCallout,
   getUserUsage,
   getUserProfile,
   resetUserMemory,
@@ -206,4 +224,3 @@ module.exports = {
   getCustomAffirmations,
   deleteCustomAffirmation
 };
-

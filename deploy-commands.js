@@ -1,11 +1,11 @@
 require("dotenv").config();
 
 const { REST, Routes, SlashCommandBuilder } = require("discord.js");
-const { groupedCategories, modes } = require("./responses");
+const { topicGroups, modes } = require("./responses");
 
-const categoryChoices = Object.keys(groupedCategories).map(key => ({
-  name: key,
-  value: key
+const categoryChoices = Object.keys(topicGroups).map(category => ({
+  name: category,
+  value: category
 }));
 
 const modeChoices = modes.map(mode => ({
@@ -20,14 +20,14 @@ const commands = [
     .addStringOption(option =>
       option
         .setName("category")
-        .setDescription("choose a category")
+        .setDescription("choose the bigger category")
         .setRequired(true)
         .addChoices(...categoryChoices)
     )
     .addStringOption(option =>
       option
         .setName("topic")
-        .setDescription("type a topic within that category, like sp, hair, revision, money, etc.")
+        .setDescription("type a topic inside that category, like sp, hair, money, revision, etc.")
         .setRequired(true)
     )
     .addStringOption(option =>
@@ -100,10 +100,15 @@ const rest = new REST({ version: "10" }).setToken(process.env.TOKEN);
 (async () => {
   try {
     console.log("registering slash commands...");
+
     await rest.put(
-      Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.GUILD_ID),
+      Routes.applicationGuildCommands(
+        process.env.CLIENT_ID,
+        process.env.GUILD_ID
+      ),
       { body: commands }
     );
+
     console.log("slash commands registered.");
   } catch (error) {
     console.error("failed to register commands:", error);

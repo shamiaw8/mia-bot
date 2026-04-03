@@ -46,8 +46,10 @@ function getOrCreateUserUsage(userId) {
       totalCount: 0,
       lastUsedAt: null,
       lastCategory: null,
-      sameCategoryStreak: 0,
-      recentUses: []
+      lastTopic: null,
+      sameTopicStreak: 0,
+      recentUses: [],
+      spamCalloutCount: 0
     };
   }
   return usageData[userId];
@@ -56,8 +58,8 @@ function getOrCreateUserUsage(userId) {
 function getOrCreateUserProfile(userId) {
   if (!profileData[userId]) {
     profileData[userId] = {
-      favoriteCategory: null,
-      categoryCounts: {},
+      favoriteTopic: null,
+      topicCounts: {},
       customAffirmations: []
     };
   }
@@ -69,24 +71,26 @@ function getOrCreateUserProfile(userId) {
   return profileData[userId];
 }
 
-function recordUsage(userId, category) {
+function recordUsage(userId, category, topic) {
   const userUsage = getOrCreateUserUsage(userId);
   const userProfile = getOrCreateUserProfile(userId);
   const now = getNow();
 
   userUsage.totalCount += 1;
   userUsage.lastUsedAt = now;
+  userUsage.lastCategory = category;
 
-  if (userUsage.lastCategory === category) {
-    userUsage.sameCategoryStreak += 1;
+  if (userUsage.lastTopic === topic) {
+    userUsage.sameTopicStreak += 1;
   } else {
-    userUsage.sameCategoryStreak = 1;
+    userUsage.sameTopicStreak = 1;
   }
 
-  userUsage.lastCategory = category;
+  userUsage.lastTopic = topic;
 
   userUsage.recentUses.push({
     category,
+    topic,
     timestamp: now
   });
 
@@ -94,27 +98,40 @@ function recordUsage(userId, category) {
     entry => now - entry.timestamp <= 10 * 60 * 1000
   );
 
-  if (!userProfile.categoryCounts[category]) {
-    userProfile.categoryCounts[category] = 0;
+  if (!userProfile.topicCounts[topic]) {
+    userProfile.topicCounts[topic] = 0;
   }
 
-  userProfile.categoryCounts[category] += 1;
+  userProfile.topicCounts[topic] += 1;
 
-  const favoriteCategory = Object.entries(userProfile.categoryCounts)
+  const favoriteTopic = Object.entries(userProfile.topicCounts)
     .sort((a, b) => b[1] - a[1])[0];
 
-  userProfile.favoriteCategory = favoriteCategory ? favoriteCategory[0] : category;
+  userProfile.favoriteTopic = favoriteTopic ? favoriteTopic[0] : topic;
 
   saveJson(usageFilePath, usageData);
   saveJson(profileFilePath, profileData);
 
   return {
     totalCount: userUsage.totalCount,
-    sameCategoryStreak: userUsage.sameCategoryStreak,
+    sameTopicStreak: userUsage.sameTopicStreak,
     recentUsesInTenMinutes: userUsage.recentUses.length,
-    favoriteCategory: userProfile.favoriteCategory,
-    lastCategory: userUsage.lastCategory
+    favoriteTopic: userProfile.favoriteTopic,
+    spamCalloutCount: userUsage.spamCalloutCount
   };
+}
+
+function incrementSpamCallout(userId) {
+  const userUsage = getOrCreateUserUsage(userId);
+  userUsage.spamCalloutCount += 1;
+  saveJson(usageFilePath, usageData);
+  return userUsage.spamCalloutCount;
+}
+
+function clearSpamPressure(userId) {
+  const userUsage = getOrCreateUserUsage(userId);
+  userUsage.spamCalloutCount = 0;
+  saveJson(usageFilePath, usageData);
 }
 
 function getUserUsage(userId) {
@@ -130,13 +147,15 @@ function resetUserMemory(userId) {
     totalCount: 0,
     lastUsedAt: null,
     lastCategory: null,
-    sameCategoryStreak: 0,
-    recentUses: []
+    lastTopic: null,
+    sameTopicStreak: 0,
+    recentUses: [],
+    spamCalloutCount: 0
   };
 
   profileData[userId] = {
-    favoriteCategory: null,
-    categoryCounts: {},
+    favoriteTopic: null,
+    topicCounts: {},
     customAffirmations: []
   };
 
@@ -178,6 +197,8 @@ function deleteCustomAffirmation(userId, index) {
 
 module.exports = {
   recordUsage,
+  incrementSpamCallout,
+  clearSpamPressure,
   getUserUsage,
   getUserProfile,
   resetUserMemory,
@@ -185,3 +206,4 @@ module.exports = {
   getCustomAffirmations,
   deleteCustomAffirmation
 };
+

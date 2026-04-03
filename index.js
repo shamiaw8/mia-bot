@@ -1,4 +1,3 @@
-cat > index.js <<'EOF'
 require("dotenv").config();
 
 const { Client, GatewayIntentBits } = require("discord.js");
@@ -28,21 +27,15 @@ const client = new Client({
 });
 
 function getResponseStyle(usageSnapshot) {
-  const {
-    totalCount,
-    sameTopicStreak,
-    recentUsesInTenMinutes
-  } = usageSnapshot;
-
-  if (sameTopicStreak >= 3) {
+  if (usageSnapshot.sameTopicStreak >= 3) {
     return "sameTopicSpam";
   }
 
-  if (recentUsesInTenMinutes >= 5) {
+  if (usageSnapshot.recentUsesInTenMinutes >= 5) {
     return "generalSpam";
   }
 
-  if (totalCount > 5) {
+  if (usageSnapshot.totalCount > 5) {
     return "generalSpam";
   }
 
@@ -53,14 +46,16 @@ client.once("ready", () => {
   console.log(`${process.env.BOT_NAME || "m.i.a."} is online as ${client.user.tag}`);
 });
 
-client.on("interactionCreate", async interaction => {
-  if (!interaction.isChatInputCommand()) return;
+client.on("interactionCreate", async (interaction) => {
+  if (!interaction.isChatInputCommand()) {
+    return;
+  }
 
   try {
     if (interaction.commandName === "mia") {
       const rawCategory = interaction.options.getString("category", true);
       const rawTopic = interaction.options.getString("topic", true);
-      const mode = interaction.options.getString("mode", false);
+      const mode = interaction.options.getString("mode");
 
       const category = normalizeInput(rawCategory);
       const topic = normalizeInput(rawTopic);
@@ -232,4 +227,3 @@ client.on("interactionCreate", async interaction => {
 });
 
 client.login(process.env.TOKEN);
-EOF

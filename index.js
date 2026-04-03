@@ -1,3 +1,4 @@
+cat > index.js <<'EOF'
 require("dotenv").config();
 
 const { Client, GatewayIntentBits } = require("discord.js");
@@ -52,7 +53,7 @@ client.once("ready", () => {
   console.log(`${process.env.BOT_NAME || "m.i.a."} is online as ${client.user.tag}`);
 });
 
-client.on("interactionCreate", async (interaction) => {
+client.on("interactionCreate", async interaction => {
   if (!interaction.isChatInputCommand()) return;
 
   try {
@@ -93,9 +94,7 @@ client.on("interactionCreate", async (interaction) => {
         harsher
       });
 
-      await interaction.reply({
-        content: response
-      });
+      await interaction.reply({ content: response });
       return;
     }
 
@@ -147,9 +146,9 @@ client.on("interactionCreate", async (interaction) => {
     if (interaction.commandName === "miamyaffirm") {
       const affirmations = getCustomAffirmations(interaction.user.id);
 
-      if (!affirmations || affirmations.length === 0) {
+      if (affirmations.length === 0) {
         await interaction.reply({
-          content: "you don’t have any custom affirmations saved yet. go write something useful instead of staring into space.",
+          content: "you don’t have any custom affirmations saved yet. go write something useful instead of staring at the void.",
           ephemeral: true
         });
         return;
@@ -233,3 +232,4 @@ client.on("interactionCreate", async (interaction) => {
 });
 
 client.login(process.env.TOKEN);
+EOF

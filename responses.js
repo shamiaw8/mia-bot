@@ -2,6 +2,15 @@ function randomItem(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
+const topicGroups = {
+  relationships: ["sp", "family", "friendships", "texting", "attraction"],
+  appearance: ["appearance", "glowup", "body", "hair"],
+  mindset: ["selfconcept", "mindset", "confidence", "detachment", "realitycheck", "delusioncheck"],
+  success: ["money", "career", "celebrity", "school", "goals", "socialmedia"],
+  lifestyle: ["discipline", "energy", "lifestyle", "morning", "night", "timing"],
+  revision: ["revision"]
+};
+
 const categories = {
   sp: [
     "they’re already pulled in. you’re the one acting confused.",
@@ -18,52 +27,7 @@ const categories = {
     "they keep circling your energy because it feels like home.",
     "you are the person they compare everyone else to.",
     "your absence gets loud very fast.",
-    "they do not forget people like you.",
-    "your energy stays on their mind longer than they admit.",
-    "you are not hard to love. you are hard to ignore.",
-    "what belongs to you always turns back toward you."
-  ],
-
-  money: [
-    "money sticks to you because you know how to hold it.",
-    "you are not broke. you are reorganizing the flow.",
-    "your bank account responds well to standards.",
-    "wealth likes people who stop panicking around numbers.",
-    "you always have enough and then some.",
-    "money trusts you more when you stop acting scared of it.",
-    "abundance is your baseline, not a lucky accident.",
-    "financial peace looks better on you than panic ever did.",
-    "your income expands when your identity does.",
-    "wealth grows where standards stay high.",
-    "money returns to people who expect it.",
-    "your reality keeps proving that you are supported.",
-    "you do better financially when you stop performing lack.",
-    "money is not avoiding you. calm down.",
-    "overflow starts looking normal once you stop worshipping scarcity.",
-    "your standards teach money how to stay.",
-    "you are available for support, security, and increase.",
-    "wealth fits better when you stop arguing for struggle."
-  ],
-
-  career: [
-    "you are not waiting to be discovered. you are becoming unavoidable.",
-    "people with less talent and less aura do this every day. stand up.",
-    "your career moves the second you move like you belong there.",
-    "opportunities find you because you look expensive and competent.",
-    "your name belongs in rooms you haven’t entered yet.",
-    "your work speaks loudly before you do.",
-    "you are building a reputation, not begging for a chance.",
-    "being booked suits you.",
-    "your talent deserves visibility and structure.",
-    "serious opportunities love serious self-concept.",
-    "people remember your presence and your work.",
-    "your career likes decisive people.",
-    "you do not need permission to take up professional space.",
-    "your next opportunity is looking for someone exactly like you.",
-    "your work gets stronger when your self-doubt gets quieter.",
-    "you are not behind. you are refining your standard.",
-    "your career responds to nerve, not overthinking.",
-    "you look better when you stop shrinking around ambition."
+    "they do not forget people like you."
   ],
 
   family: [
@@ -76,372 +40,7 @@ const categories = {
     "you are allowed to be soft and still have boundaries.",
     "your relationships calm down when you stop feeding old dynamics.",
     "love does not require self-abandonment.",
-    "your boundaries are structure, not cruelty.",
-    "you are allowed to feel safe with people you love.",
-    "peace is your new family language.",
-    "you do not owe emotional chaos your loyalty.",
-    "old patterns are not prophecies.",
-    "you can change a relationship by changing the role you play in it.",
-    "being understood gets easier when you stop collapsing first.",
-    "peace is not distance. it is better identity.",
-    "you are no longer available for painful repetition."
-  ],
-
-  appearance: [
-    "your face card is offensive at this point.",
-    "you do not need permission to be devastating.",
-    "people notice you before they decide how to feel about it.",
-    "your beauty has range, menace, and precision.",
-    "you don’t need more validation. mirrors already told you.",
-    "you look expensive because your energy is.",
-    "your presence edits the room.",
-    "your features are working overtime in your favor.",
-    "being stared at is not your problem.",
-    "you are visually unfair.",
-    "you wear beauty like a threat.",
-    "your look lands before you even speak.",
-    "you get prettier when you stop acting unsure.",
-    "your appearance sharpens under certainty.",
-    "you were never ordinary-looking. people just needed time to catch up.",
-    "your face does not require debate.",
-    "beauty behaves better in the hands of someone who expects it.",
-    "your visual impact is not subtle and that is fine."
-  ],
-
-  detachment: [
-    "detachment is not giving up. it’s finally acting like the prize.",
-    "stop gripping the outcome like it owes you rent.",
-    "let it land. your job is identity, not obsession.",
-    "you’re attached because you keep checking. stop that.",
-    "the result works faster when you stop poking at it.",
-    "relaxed certainty beats desperate effort every time.",
-    "you do not need to hover over what is already yours.",
-    "hold the standard, drop the panic.",
-    "certainty is quiet.",
-    "detachment is self-respect in motion.",
-    "stop petting the problem.",
-    "your power returns the second you unclench.",
-    "you don’t need to keep looking at the seed to know it was planted.",
-    "release is not loss.",
-    "the need to monitor is what keeps annoying you.",
-    "your result does not require constant supervision.",
-    "being calm is not the same thing as giving up.",
-    "detachment looks very good on someone who always gets what they want."
-  ],
-
-  discipline: [
-    "discipline is just self-respect with a schedule.",
-    "you do not need motivation. you need fewer negotiations.",
-    "stop asking how to feel like doing it. do it hot and annoyed.",
-    "consistency builds results faster than dramatic little mood swings.",
-    "your future is built by boring repetition. tragic, but useful.",
-    "do the thing before your excuses put on makeup.",
-    "you said this mattered. act like it.",
-    "being iconic is mostly maintenance.",
-    "less overthinking. more execution.",
-    "self-trust is built through repetition.",
-    "showing up counts even when it’s not glamorous.",
-    "you are too available for excuses.",
-    "you keep trying to replace consistency with intensity. stop that.",
-    "discipline gets easier when you stop making every task emotional.",
-    "it does not need to be exciting to be effective.",
-    "your habits reveal what you actually worship.",
-    "do it before the spiral gets dressed.",
-    "progress loves structure more than passion."
-  ],
-
-  socialmedia: [
-    "post it. nobody cares about your fake perfectionism.",
-    "visibility likes bold people, not hidden drafts.",
-    "you are not cringey. you are underposted.",
-    "the algorithm responds to consistency and nerve.",
-    "people cannot obsess over what you refuse to show them.",
-    "post first, tweak later. nobody died.",
-    "attention finds people who act like they can hold it.",
-    "your audience cannot gather around silence.",
-    "hiding is not curation.",
-    "consistency is hotter than perfection.",
-    "you do not need another draft. you need publish.",
-    "stop ghosting your own brand.",
-    "your fear of being seen is not artistic vision.",
-    "no one can connect with content you never release.",
-    "make the post and survive the experience.",
-    "your brand gets stronger every time you stop vanishing.",
-    "you do not need more private genius. you need public output.",
-    "people remember creators who keep showing up."
-  ],
-
-  celebrity: [
-    "fame is just repetition plus identity plus nerve.",
-    "being known suits you. stop acting startled.",
-    "your name travels well. let it.",
-    "you do not need to feel ready to be iconic.",
-    "public success belongs to people who can tolerate being seen.",
-    "celebrity starts as self-concept before it becomes optics.",
-    "you were not built for a tiny life.",
-    "recognition finds people who stop apologizing for wanting it.",
-    "your image deserves scale.",
-    "visibility is not vanity. it’s reach.",
-    "your future audience is looking for someone exactly like you.",
-    "famous looks natural on you.",
-    "your life gets bigger when you stop thinking small in private.",
-    "you need less embarrassment about wanting to be seen.",
-    "audiences gather around certainty.",
-    "you do not need to earn the desire to be known.",
-    "your image can handle attention.",
-    "scale is a self-concept issue first."
-  ],
-
-  glowup: [
-    "this is not a glow-up. it’s a reveal.",
-    "you were always that hot. now you’re organized about it.",
-    "beauty loves routine, standards, and water. groundbreaking.",
-    "you do not chase pretty. you maintain power.",
-    "your glow-up is getting rude now.",
-    "beauty compounds when your habits do.",
-    "small rituals create violent results over time.",
-    "your maintenance is starting to look expensive.",
-    "you are curating impact, not just aesthetics.",
-    "you look like you take yourself seriously.",
-    "the difference is showing because you kept going.",
-    "your glow-up moves like a quiet threat.",
-    "this gets easier when you stop acting like improvement is optional.",
-    "you are building visual proof through repetition.",
-    "care looks good on you.",
-    "your glow-up is mostly standards, not magic.",
-    "your habits are either serving face or sabotaging it.",
-    "you are getting more polished and more dangerous at the same time."
-  ],
-
-  body: [
-    "your body listens when you stop speaking to it like an enemy.",
-    "results love repetition, not panic.",
-    "you are getting toned, defined, and stronger because that is the plan.",
-    "stop checking for overnight changes and go finish the routine.",
-    "your body is always responding, even when you’re dramatic about timing.",
-    "your shape is refining because you keep showing up.",
-    "definition comes from standards, not spirals.",
-    "your body likes structure and calm leadership.",
-    "you do not need punishment. you need consistency.",
-    "your body is not resisting you. it’s adapting.",
-    "every repetition counts, even the annoying ones.",
-    "your body is building exactly what you asked for.",
-    "your body rewards steadiness.",
-    "talk to your body like it belongs to you.",
-    "you are not trapped in one form forever. please.",
-    "visible change is a patience game with better posture.",
-    "you get better results when you stop emotionally bullying yourself.",
-    "your body is cooperating more than you think."
-  ],
-
-  hair: [
-    "your hair grows like it has something to prove.",
-    "your length is catching up to your attitude.",
-    "your hair is growing past old limits because you said so.",
-    "length comes easier when you stop stalking every inch.",
-    "your hair is thick, healthy, and committed to the mission.",
-    "every day your hair gets longer, stronger, and harder to ignore.",
-    "your hair is literally obsessed with reaching your goals.",
-    "your crown responds beautifully to consistency.",
-    "your hair loves your routines and rewards them fast.",
-    "healthy growth is your default now.",
-    "your hair keeps choosing expansion.",
-    "your hair behaves like it knows you’re iconic.",
-    "you are not stuck at one length forever. be serious.",
-    "your ends are not the enemy. neglect is.",
-    "hair thrives under consistency and calm hands.",
-    "your crown is learning your standard and matching it.",
-    "length is accumulating while you overthink.",
-    "your hair is doing exactly what living things do when cared for: growing."
-  ],
-
-  morning: [
-    "good morning. act like the version of you who already won.",
-    "do not start your day in lack. that’s ugly.",
-    "today responds to your identity. choose wisely.",
-    "wake up hotter. think cleaner. move faster.",
-    "set the tone before the world tries anything stupid.",
-    "you do not need chaos to feel productive.",
-    "begin like someone who expects things to work out.",
-    "wake up in self-command.",
-    "certainty before scrolling.",
-    "move like the day was built to favor you.",
-    "carry your standards into the sunrise.",
-    "the morning belongs to whoever grabs the narrative first.",
-    "choose the mood before the world suggests one for you.",
-    "your first thoughts matter more than you admit.",
-    "start the day like your reality obeys you.",
-    "wake up and stop auditioning for struggle.",
-    "your morning should sound better than your fear.",
-    "a better day starts with better inner language."
-  ],
-
-  night: [
-    "go to sleep like it’s already handled.",
-    "nighttime is not for spiraling. it’s for letting reality catch up.",
-    "stop rehearsing fear before bed. weird hobby.",
-    "sleep in certainty and let the subconscious do its job.",
-    "close the day without begging the universe for crumbs.",
-    "nothing needs your emergency commentary tonight.",
-    "rest is part of manifestation, not a delay.",
-    "release the day without dragging fear into tomorrow.",
-    "you don’t need another sign before sleep.",
-    "peace looks better on you at night.",
-    "tomorrow arrives faster when you stop wrestling tonight.",
-    "bedtime is for certainty, not chaos.",
-    "the version of you with results is not panicking at 11:47 pm.",
-    "you are tired, not intuitive.",
-    "put the doom monologue away and go rest.",
-    "sleep is not surrender. it is trust.",
-    "let the day end without forcing a conclusion.",
-    "night is where you stop performing fear."
-  ],
-
-  realitycheck: [
-    "you are not stuck. you are just checking too much.",
-    "nothing is wrong except your habit of doubting progress.",
-    "the spiral is not intuition. it’s bad discipline.",
-    "stop turning a delay into a tragedy.",
-    "you do not need another sign. you need better posture.",
-    "you are closer than your attitude suggests.",
-    "panic is not perception.",
-    "your fear is loud, not accurate.",
-    "nothing collapsed. you just got theatrical.",
-    "breathe and stop assigning doom to silence.",
-    "you need steadiness, not another dramatic conclusion.",
-    "your problem is mostly checking in a prettier outfit.",
-    "you are overnarrating a normal unfolding.",
-    "delay does not equal denial.",
-    "what you are calling evidence is often just impatience.",
-    "calm down before you call it a pattern.",
-    "your nervous system is not a prophet.",
-    "most of this would improve if you stopped refreshing the wound."
-  ],
-
-  delusioncheck: [
-    "good news: the delusion is not the issue. the inconsistency is.",
-    "you’re allowed to believe big. just stop collapsing every six minutes.",
-    "the fantasy works better when your habits match it.",
-    "dream bigger, but stop moving like a side character.",
-    "the vision is correct. your panic is the only off-brand part.",
-    "believe whatever you want. then act like you meant it.",
-    "you do not need smaller dreams. you need a stronger identity.",
-    "keep the vision. lose the wobbling.",
-    "you can want huge things without acting helpless.",
-    "the life you want is not impossible. it just hates inconsistency.",
-    "delusion becomes strategy when you embody it.",
-    "your vision is fine. your waffling is the ugly part.",
-    "stop asking whether it’s delusional and start asking whether you’re stable enough to hold it.",
-    "big desires are not the problem. weak follow-through is.",
-    "your standards are not too high. your nervous system is just dramatic.",
-    "expecting more is normal for people who get more.",
-    "you don’t need to shrink the dream. you need to match it.",
-    "owning the vision looks better than apologizing for it."
-  ],
-
-  school: [
-    "you are not bad at school. you are too identified with old evidence.",
-    "your brain works better when you stop insulting it.",
-    "you learn quickly, recall cleanly, and perform well under pressure.",
-    "you are fully capable of understanding difficult material.",
-    "academic success looks very natural on you.",
-    "your intelligence is not up for debate.",
-    "you do better when you stop panicking and start deciding.",
-    "your mind catches on faster than your fear admits.",
-    "you are not behind. you are reorganizing how you see yourself.",
-    "good grades belong to people who stop rehearsing failure.",
-    "you are allowed to be brilliant without suffering theatrics.",
-    "school gets easier when your identity stops fighting you."
-  ],
-
-  revision: [
-    "revision is not lying. it is choosing the version that serves you now.",
-    "the past is not a prison. it is a story you are allowed to update.",
-    "stop worshipping old evidence like it outranks your present decision.",
-    "you decide what that event means now.",
-    "unfavorable memories do not get final authority.",
-    "revision works when you stop arguing for the old version.",
-    "you are allowed to remember things in a way that supports you.",
-    "the past responds to identity too.",
-    "you do not need to keep emotional loyalty to a bad outcome.",
-    "rewrite it cleanly and move on.",
-    "the old story is only powerful if you keep feeding it.",
-    "you can mentally replace the event and let reality catch up."
-  ],
-
-  selfconcept: [
-    "self concept is the root, not the decoration.",
-    "everything changes faster when you stop identifying as the one who struggles.",
-    "you do not get different results while worshipping the same old identity.",
-    "your self concept decides what feels normal.",
-    "becoming the version of you who has it is the whole game.",
-    "you are not fixing circumstances. you are stabilizing identity.",
-    "what you believe you deserve keeps leaking into everything.",
-    "raise the self concept and the rest follows.",
-    "you need less obsession with outcomes and more obsession with who you are.",
-    "your identity is the real manifestation technique.",
-    "stop trying to get and start being.",
-    "you attract from identity, not desperation."
-  ],
-
-  confidence: [
-    "confidence is not loud. it is settled.",
-    "you do not need to prove yourself in every room.",
-    "your presence improves when you stop apologizing with your posture.",
-    "confidence looks like fewer internal arguments.",
-    "you become more magnetic when you stop monitoring yourself.",
-    "people trust the energy that trusts itself.",
-    "you are allowed to take up space without performing for it.",
-    "your voice sounds better when you believe it belongs there.",
-    "confidence is repetition without self-betrayal.",
-    "stop shrinking and calling it humility.",
-    "being sure of yourself is not arrogance. it is relief.",
-    "you look better the second you decide not to flinch."
-  ],
-
-  mindset: [
-    "your thoughts need better management, not more drama.",
-    "a bad thought is not a prophecy.",
-    "mindset is just what you repeatedly agree with.",
-    "stop rehearsing what you hate and calling it awareness.",
-    "your inner language is building your normal.",
-    "the thought can happen without getting the throne.",
-    "not every feeling deserves to become a belief.",
-    "you are allowed to interrupt yourself.",
-    "mental discipline is hotter than emotional chaos.",
-    "what you feed mentally starts feeling true.",
-    "start talking like your life obeys you.",
-    "you do not need perfect thoughts, just better dominance."
-  ],
-
-  energy: [
-    "your energy gets cleaner when you stop leaking it into panic.",
-    "restoring your energy is not laziness. it is maintenance.",
-    "you feel off because you keep entertaining what drains you.",
-    "protect your energy like it has somewhere important to be.",
-    "your energy sharpens when your standards do.",
-    "stop scattering yourself over things that do not matter.",
-    "being tired does not mean being doomed.",
-    "your field responds better when you are not internally screaming.",
-    "energy is attention with a body.",
-    "pull your energy back and watch how different everything feels.",
-    "you are allowed to reset without explaining it.",
-    "calm energy is still powerful energy."
-  ],
-
-  attraction: [
-    "attraction gets easier when you stop trying so hard to be wanted.",
-    "you are naturally desirable when you stop doubting your effect.",
-    "people pick up on your self-concept before your looks finish the job.",
-    "magnetism is certainty in good lighting.",
-    "you pull more when you stop begging energetically.",
-    "attraction belongs to people who expect to be wanted.",
-    "you are not trying to be magnetic. you already are.",
-    "desire follows identity.",
-    "people notice the one who notices their own value.",
-    "you do not need to chase attention. your energy collects it.",
-    "you become more attractive the second you become less available for nonsense.",
-    "wanting to be wanted is fine. acting desperate is ugly."
+    "your boundaries are structure, not cruelty."
   ],
 
   friendships: [
@@ -454,9 +53,7 @@ const categories = {
     "not every quiet moment means exclusion.",
     "you can be liked without performing.",
     "healthy friendship feels lighter than what you’ve normalized.",
-    "you belong in good rooms with good people.",
-    "the right people do not require you to shrink.",
-    "friendships become easier when you stop narrating yourself as the outsider."
+    "you belong in good rooms with good people."
   ],
 
   texting: [
@@ -469,24 +66,202 @@ const categories = {
     "not every message requires a forensic investigation.",
     "your worth is not measured in typing bubbles.",
     "the conversation is not dead just because your fear is loud.",
-    "you sound better when you stop texting from panic.",
-    "let people respond without building a funeral in the meantime.",
-    "communication flows better when your self concept does."
+    "let people respond without building a funeral in the meantime."
   ],
 
-  lifestyle: [
-    "your lifestyle is just your standards wearing a schedule.",
-    "romanticize the routine and your life gets better fast.",
-    "you need fewer random habits and more intentional ones.",
-    "lifestyle is identity made visible.",
-    "your daily life should reflect what you say you want.",
-    "stop wanting a better life while maintaining worse habits.",
-    "your environment should support the version of you you claim to be.",
-    "better lifestyle, better evidence, better mood.",
-    "luxury starts in standards before it shows up in objects.",
-    "how you live teaches reality what you expect.",
-    "your life gets prettier when your choices do.",
-    "build a life that agrees with your self-concept."
+  attraction: [
+    "attraction gets easier when you stop trying so hard to be wanted.",
+    "you are naturally desirable when you stop doubting your effect.",
+    "people pick up on your self-concept before your looks finish the job.",
+    "magnetism is certainty in good lighting.",
+    "you pull more when you stop begging energetically.",
+    "attraction belongs to people who expect to be wanted.",
+    "you are not trying to be magnetic. you already are.",
+    "desire follows identity.",
+    "people notice the one who notices their own value.",
+    "you do not need to chase attention. your energy collects it."
+  ],
+
+  appearance: [
+    "your face card is offensive at this point.",
+    "you do not need permission to be devastating.",
+    "people notice you before they decide how to feel about it.",
+    "your beauty has range, menace, and precision.",
+    "you don’t need more validation. mirrors already told you.",
+    "you look expensive because your energy is.",
+    "your presence edits the room.",
+    "being stared at is not your problem.",
+    "you are visually unfair.",
+    "you wear beauty like a threat."
+  ],
+
+  glowup: [
+    "this is not a glow-up. it’s a reveal.",
+    "you were always that hot. now you’re organized about it.",
+    "beauty loves routine, standards, and water. groundbreaking.",
+    "you do not chase pretty. you maintain power.",
+    "your glow-up is getting rude now.",
+    "beauty compounds when your habits do.",
+    "small rituals create violent results over time.",
+    "your maintenance is starting to look expensive.",
+    "you are curating impact, not just aesthetics.",
+    "you look like you take yourself seriously."
+  ],
+
+  body: [
+    "your body listens when you stop speaking to it like an enemy.",
+    "results love repetition, not panic.",
+    "you are getting toned, defined, and stronger because that is the plan.",
+    "stop checking for overnight changes and go finish the routine.",
+    "your body is always responding, even when you’re dramatic about timing.",
+    "your shape is refining because you keep showing up.",
+    "definition comes from standards, not spirals.",
+    "your body likes structure and calm leadership.",
+    "you do not need punishment. you need consistency.",
+    "your body is not resisting you. it’s adapting."
+  ],
+
+  hair: [
+    "your hair grows like it has something to prove.",
+    "your length is catching up to your attitude.",
+    "your hair is growing past old limits because you said so.",
+    "length comes easier when you stop stalking every inch.",
+    "your hair is thick, healthy, and committed to the mission.",
+    "every day your hair gets longer, stronger, and harder to ignore.",
+    "your hair is literally obsessed with reaching your goals.",
+    "your crown responds beautifully to consistency.",
+    "your hair loves your routines and rewards them fast.",
+    "healthy growth is your default now."
+  ],
+
+  selfconcept: [
+    "self concept is the root, not the decoration.",
+    "everything changes faster when you stop identifying as the one who struggles.",
+    "you do not get different results while worshipping the same old identity.",
+    "your self concept decides what feels normal.",
+    "becoming the version of you who has it is the whole game.",
+    "you are not fixing circumstances. you are stabilizing identity.",
+    "what you believe you deserve keeps leaking into everything.",
+    "raise the self concept and the rest follows.",
+    "you need less obsession with outcomes and more obsession with who you are.",
+    "your identity is the real manifestation technique."
+  ],
+
+  mindset: [
+    "your thoughts need better management, not more drama.",
+    "a bad thought is not a prophecy.",
+    "mindset is just what you repeatedly agree with.",
+    "stop rehearsing what you hate and calling it awareness.",
+    "your inner language is building your normal.",
+    "the thought can happen without getting the throne.",
+    "not every feeling deserves to become a belief.",
+    "you are allowed to interrupt yourself.",
+    "mental discipline is hotter than emotional chaos.",
+    "you do not need perfect thoughts, just better dominance."
+  ],
+
+  confidence: [
+    "confidence is not loud. it is settled.",
+    "you do not need to prove yourself in every room.",
+    "your presence improves when you stop apologizing with your posture.",
+    "confidence looks like fewer internal arguments.",
+    "you become more magnetic when you stop monitoring yourself.",
+    "people trust the energy that trusts itself.",
+    "you are allowed to take up space without performing for it.",
+    "confidence is repetition without self-betrayal.",
+    "stop shrinking and calling it humility.",
+    "you look better the second you decide not to flinch."
+  ],
+
+  detachment: [
+    "detachment is not giving up. it’s finally acting like the prize.",
+    "stop gripping the outcome like it owes you rent.",
+    "let it land. your job is identity, not obsession.",
+    "you’re attached because you keep checking. stop that.",
+    "the result works faster when you stop poking at it.",
+    "relaxed certainty beats desperate effort every time.",
+    "you do not need to hover over what is already yours.",
+    "hold the standard, drop the panic.",
+    "certainty is quiet.",
+    "detachment is self-respect in motion."
+  ],
+
+  realitycheck: [
+    "you are not stuck. you are just checking too much.",
+    "nothing is wrong except your habit of doubting progress.",
+    "the spiral is not intuition. it’s bad discipline.",
+    "stop turning a delay into a tragedy.",
+    "you do not need another sign. you need better posture.",
+    "you are closer than your attitude suggests.",
+    "panic is not perception.",
+    "your fear is loud, not accurate.",
+    "nothing collapsed. you just got theatrical.",
+    "you need steadiness, not another dramatic conclusion."
+  ],
+
+  delusioncheck: [
+    "good news: the delusion is not the issue. the inconsistency is.",
+    "you’re allowed to believe big. just stop collapsing every six minutes.",
+    "the fantasy works better when your habits match it.",
+    "dream bigger, but stop moving like a side character.",
+    "the vision is correct. your panic is the only off-brand part.",
+    "believe whatever you want. then act like you meant it.",
+    "you do not need smaller dreams. you need a stronger identity.",
+    "keep the vision. lose the wobbling.",
+    "you can want huge things without acting helpless.",
+    "delusion becomes strategy when you embody it."
+  ],
+
+  money: [
+    "money sticks to you because you know how to hold it.",
+    "you are not broke. you are reorganizing the flow.",
+    "your bank account responds well to standards.",
+    "wealth likes people who stop panicking around numbers.",
+    "you always have enough and then some.",
+    "money trusts you more when you stop acting scared of it.",
+    "abundance is your baseline, not a lucky accident.",
+    "financial peace looks better on you than panic ever did.",
+    "your income expands when your identity does.",
+    "wealth grows where standards stay high."
+  ],
+
+  career: [
+    "you are not waiting to be discovered. you are becoming unavoidable.",
+    "people with less talent and less aura do this every day. stand up.",
+    "your career moves the second you move like you belong there.",
+    "opportunities find you because you look expensive and competent.",
+    "your name belongs in rooms you haven’t entered yet.",
+    "your work speaks loudly before you do.",
+    "you are building a reputation, not begging for a chance.",
+    "being booked suits you.",
+    "your talent deserves visibility and structure.",
+    "serious opportunities love serious self-concept."
+  ],
+
+  celebrity: [
+    "fame is just repetition plus identity plus nerve.",
+    "being known suits you. stop acting startled.",
+    "your name travels well. let it.",
+    "you do not need to feel ready to be iconic.",
+    "public success belongs to people who can tolerate being seen.",
+    "celebrity starts as self-concept before it becomes optics.",
+    "you were not built for a tiny life.",
+    "recognition finds people who stop apologizing for wanting it.",
+    "your image deserves scale.",
+    "visibility is not vanity. it’s reach."
+  ],
+
+  school: [
+    "you are not bad at school. you are too identified with old evidence.",
+    "your brain works better when you stop insulting it.",
+    "you learn quickly, recall cleanly, and perform well under pressure.",
+    "you are fully capable of understanding difficult material.",
+    "academic success looks very natural on you.",
+    "your intelligence is not up for debate.",
+    "you do better when you stop panicking and start deciding.",
+    "your mind catches on faster than your fear admits.",
+    "good grades belong to people who stop rehearsing failure.",
+    "school gets easier when your identity stops fighting you."
   ],
 
   goals: [
@@ -499,9 +274,85 @@ const categories = {
     "finish more things. your confidence will thank you.",
     "you do not need a new dream every week.",
     "goals are identity with deadlines.",
-    "progress is boring until it becomes gorgeous.",
-    "pick the target and stop flirting with excuses.",
-    "you look more powerful when you follow through."
+    "pick the target and stop flirting with excuses."
+  ],
+
+  socialmedia: [
+    "post it. nobody cares about your fake perfectionism.",
+    "visibility likes bold people, not hidden drafts.",
+    "you are not cringey. you are underposted.",
+    "the algorithm responds to consistency and nerve.",
+    "people cannot obsess over what you refuse to show them.",
+    "post first, tweak later. nobody died.",
+    "attention finds people who act like they can hold it.",
+    "your audience cannot gather around silence.",
+    "hiding is not curation.",
+    "you do not need another draft. you need publish."
+  ],
+
+  discipline: [
+    "discipline is just self-respect with a schedule.",
+    "you do not need motivation. you need fewer negotiations.",
+    "stop asking how to feel like doing it. do it hot and annoyed.",
+    "consistency builds results faster than dramatic little mood swings.",
+    "your future is built by boring repetition. tragic, but useful.",
+    "do the thing before your excuses put on makeup.",
+    "you said this mattered. act like it.",
+    "being iconic is mostly maintenance.",
+    "less overthinking. more execution.",
+    "self-trust is built through repetition."
+  ],
+
+  energy: [
+    "your energy gets cleaner when you stop leaking it into panic.",
+    "restoring your energy is not laziness. it is maintenance.",
+    "you feel off because you keep entertaining what drains you.",
+    "protect your energy like it has somewhere important to be.",
+    "your energy sharpens when your standards do.",
+    "stop scattering yourself over things that do not matter.",
+    "being tired does not mean being doomed.",
+    "your field responds better when you are not internally screaming.",
+    "pull your energy back and watch how different everything feels.",
+    "calm energy is still powerful energy."
+  ],
+
+  lifestyle: [
+    "your lifestyle is just your standards wearing a schedule.",
+    "romanticize the routine and your life gets better fast.",
+    "you need fewer random habits and more intentional ones.",
+    "lifestyle is identity made visible.",
+    "your daily life should reflect what you say you want.",
+    "stop wanting a better life while maintaining worse habits.",
+    "your environment should support the version of you you claim to be.",
+    "luxury starts in standards before it shows up in objects.",
+    "how you live teaches reality what you expect.",
+    "build a life that agrees with your self-concept."
+  ],
+
+  morning: [
+    "good morning. act like the version of you who already won.",
+    "do not start your day in lack. that’s ugly.",
+    "today responds to your identity. choose wisely.",
+    "wake up hotter. think cleaner. move faster.",
+    "set the tone before the world tries anything stupid.",
+    "you do not need chaos to feel productive.",
+    "begin like someone who expects things to work out.",
+    "certainty before scrolling.",
+    "move like the day was built to favor you.",
+    "the morning belongs to whoever grabs the narrative first."
+  ],
+
+  night: [
+    "go to sleep like it’s already handled.",
+    "nighttime is not for spiraling. it’s for letting reality catch up.",
+    "stop rehearsing fear before bed. weird hobby.",
+    "sleep in certainty and let the subconscious do its job.",
+    "close the day without begging the universe for crumbs.",
+    "nothing needs your emergency commentary tonight.",
+    "rest is part of manifestation, not a delay.",
+    "release the day without dragging fear into tomorrow.",
+    "you don’t need another sign before sleep.",
+    "peace looks better on you at night."
   ],
 
   timing: [
@@ -514,9 +365,20 @@ const categories = {
     "what is yours is not missing. it is moving.",
     "delay is not denial, and panic is not acceleration.",
     "you do not need to force the hour.",
-    "the more secure you are, the less dramatic timing feels.",
-    "trust lands better when you stop measuring every second.",
-    "your result is not ignoring you just because it is not here yet."
+    "the more secure you are, the less dramatic timing feels."
+  ],
+
+  revision: [
+    "revision is not lying. it is choosing the version that serves you now.",
+    "the past is not a prison. it is a story you are allowed to update.",
+    "stop worshipping old evidence like it outranks your present decision.",
+    "you decide what that event means now.",
+    "unfavorable memories do not get final authority.",
+    "revision works when you stop arguing for the old version.",
+    "you are allowed to remember things in a way that supports you.",
+    "the past responds to identity too.",
+    "you do not need to keep emotional loyalty to a bad outcome.",
+    "rewrite it cleanly and move on."
   ]
 };
 
@@ -530,16 +392,24 @@ const callouts = {
     "asking again in a different mood is still checking.",
     "you’re doing a little too much for someone who already gets what they want."
   ],
-  byCategory: {
+  harsherGeneral: [
+    "you have already been told. at this point you are choosing not to listen.",
+    "this is not needing help anymore. this is indulging doubt on purpose.",
+    "you keep asking the bot the same thing like obsession is going to make you special. enough.",
+    "if you ask again without changing your state, you are just rehearsing desperation.",
+    "you do not need another answer. you need self-control.",
+    "still here? then the problem is not the outcome. it is your refusal to hold your nerve."
+  ],
+  byTopic: {
     sp: [
       "still spiraling on sp? boring. they’re still drawn to you.",
       "asking about sp five times in a row is not romance. it’s checking.",
       "you do not need another sp answer. you need composure."
     ],
-    detachment: [
-      "asking for detachment advice repeatedly is the opposite of detachment.",
-      "you cannot cling to detachment. do you hear yourself?",
-      "this category should not be your emotional support category."
+    texting: [
+      "another texting spiral? your self concept should be embarrassed.",
+      "stop reading between lines that barely exist.",
+      "one slow reply and suddenly you’re a detective. enough."
     ],
     hair: [
       "your hair is still growing. stop interrogating it.",
@@ -551,25 +421,37 @@ const callouts = {
       "stop asking and go finish the routine.",
       "you do not need a new answer. you need another set."
     ],
-    socialmedia: [
-      "the post is still sitting in drafts, isn’t it?",
-      "asking about social media again instead of posting is very transparent.",
-      "open the app and hit post. revolutionary."
-    ],
-    realitycheck: [
-      "you already got the reality check. now apply it.",
-      "another reality check? stand up.",
-      "the situation did not get more tragic since the last command."
+    detachment: [
+      "asking for detachment advice repeatedly is the opposite of detachment.",
+      "you cannot cling to detachment. do you hear yourself?",
+      "this topic should not be your emotional support crutch."
     ],
     revision: [
-      "asking about revision repeatedly while clinging to the old story is hilarious.",
-      "you cannot revise and worship the old version at the same time.",
-      "pick the new story and stop revisiting the corpse."
+      "asking about revision while clinging to the old story is embarrassing.",
+      "you cannot revise and worship the original version at the same time.",
+      "pick the new story and stop dragging the corpse around."
+    ]
+  },
+  harsherByTopic: {
+    sp: [
+      "you are not manifesting sp right now. you are just babysitting your panic.",
+      "if you ask about sp again without calming down, you’re choosing the version of you that gets nothing.",
+      "obsessing over sp this hard is not devotion. it’s bad self-concept in a prettier outfit."
     ],
     texting: [
-      "another texting spiral? your self concept should be embarrassed.",
-      "stop reading between lines that barely exist.",
-      "one slow reply and suddenly you’re a detective. enough."
+      "you do not need another texting answer. you need to stop acting like a typing bubble controls your worth.",
+      "one delayed reply and you turn into a crime investigator. deeply unserious.",
+      "if a phone notification can wreck you this badly, the issue is not communication."
+    ],
+    hair: [
+      "your hair cannot grow in peace if you keep stalking it like this.",
+      "touching your patience every five minutes is not a hair routine.",
+      "you need less obsession and more leave-in conditioner."
+    ],
+    revision: [
+      "you keep reviving the old story and calling it revision. be serious.",
+      "if you are still emotionally kneeling to the original event, you have not revised anything.",
+      "you do not need more revision advice. you need loyalty to the new version."
     ]
   }
 };
@@ -655,26 +537,6 @@ const modeBuilders = {
       "i am financially secure, supported, and increasing.",
       "wealth is normal for me."
     ],
-    career: [
-      "my work is seen, valued, and paid well.",
-      "opportunities find me quickly and naturally.",
-      "my name belongs in powerful rooms."
-    ],
-    appearance: [
-      "i am devastatingly attractive without trying.",
-      "my presence changes the room instantly.",
-      "i look expensive, magnetic, and unforgettable."
-    ],
-    glowup: [
-      "my glow-up is obvious and continuous.",
-      "i get hotter every day.",
-      "my maintenance always pays off."
-    ],
-    body: [
-      "my body is toned, strong, and responsive.",
-      "my body changes beautifully in my favor.",
-      "my consistency shows on my body fast."
-    ],
     hair: [
       "my hair grows fast, long, healthy, and beautifully.",
       "my hair is obsessed with reaching my goals.",
@@ -688,7 +550,7 @@ const modeBuilders = {
     revision: [
       "the past supports me now.",
       "every old event is rewritten in my favor.",
-      "my current story overrides all old evidence."
+      "my chosen version is the only version that matters."
     ],
     selfconcept: [
       "i am the version of me who always gets what they want.",
@@ -713,15 +575,10 @@ const modeBuilders = {
       "the version of you who is financially secure moves like support is normal.",
       "the wealthy version of you treats money like a tool, not a threat."
     ],
-    career: [
-      "the version of you with the career sends the email, posts the work, and stops hiding.",
-      "the booked version of you treats visibility like a job requirement, not a personal attack.",
-      "the successful version of you produces before they panic."
-    ],
     revision: [
-      "the version of you who revised it successfully does not keep re-explaining the old story.",
+      "the version of you who revised it successfully does not keep explaining the old story.",
       "the version of you who changed the past emotionally treats the new version as final.",
-      "the version of you who revised it stops revisiting the old evidence for nostalgia."
+      "the version of you who revised it stops revisiting the old evidence for comfort."
     ],
     default: [
       "the version of you with the result is calmer, cleaner, and less available for nonsense.",
@@ -741,25 +598,15 @@ const modeBuilders = {
       "i am financially secure, supported, and increasing.",
       "my reality always makes room for more money."
     ],
-    career: [
-      "my work is seen, valued, and paid well.",
-      "opportunities find me fast and naturally.",
-      "my name belongs in powerful rooms."
-    ],
     hair: [
       "my hair grows fast, long, healthy, and beautifully every day.",
       "my hair is obsessed with reaching my goals.",
       "my hair gets longer, stronger, and prettier daily."
     ],
-    body: [
-      "my body is toned, defined, strong, and responsive.",
-      "my body changes quickly and beautifully in my favor.",
-      "my body loves consistency and rewards it fast."
-    ],
     revision: [
       "i only accept the revised version now.",
       "the past supports my desire perfectly.",
-      "my chosen version is the only version that matters."
+      "my current story overrides all old evidence."
     ],
     default: [
       "everything is always working out for me.",
@@ -970,45 +817,65 @@ const modeBuilders = {
   }
 };
 
-function getModeLine(mode, category) {
+function normalizeInput(value) {
+  return value.toLowerCase().replace(/\s+/g, "");
+}
+
+function isTopicInCategory(category, topic) {
+  const normalizedCategory = normalizeInput(category);
+  const normalizedTopic = normalizeInput(topic);
+  const validTopics = topicGroups[normalizedCategory] || [];
+  return validTopics.includes(normalizedTopic);
+}
+
+function getModeLine(mode, topic) {
   const builder = modeBuilders[mode];
   if (!builder) return null;
-  const pool = builder[category] || builder.default;
+  const pool = builder[topic] || builder.default;
   if (!pool) return null;
   const opener = randomItem(modeOpeners[mode]);
   return `${opener} ${randomItem(pool)}`;
 }
 
-function getBaseCategoryLine(category) {
-  const pool = categories[category] || categories.realitycheck;
+function getBaseTopicLine(topic) {
+  const pool = categories[topic] || categories.realitycheck;
   return randomItem(pool);
 }
 
-function getGeneralCallout() {
-  return randomItem(callouts.general);
+function getGeneralCallout(harsher = false) {
+  return harsher ? randomItem(callouts.harsherGeneral) : randomItem(callouts.general);
 }
 
-function getCategoryCallout(category) {
-  const pool = callouts.byCategory[category] || callouts.general;
+function getTopicCallout(topic, harsher = false) {
+  if (harsher) {
+    const harsherPool = callouts.harsherByTopic[topic];
+    if (harsherPool) return randomItem(harsherPool);
+    return randomItem(callouts.harsherGeneral);
+  }
+
+  const pool = callouts.byTopic[topic] || callouts.general;
   return randomItem(pool);
 }
 
-function getReassurance() {
+function getReassurance(harsher = false) {
+  if (harsher) {
+    return "good. now stop spiraling and hold the line.";
+  }
   return randomItem(reassuranceClosers);
 }
 
-function buildResponse({ category, mode = null, responseStyle = "standard" }) {
-  const baseLine = getBaseCategoryLine(category);
-  const modeLine = mode ? getModeLine(mode, category) : null;
+function buildResponse({ topic, mode = null, responseStyle = "standard", harsher = false }) {
+  const baseLine = getBaseTopicLine(topic);
+  const modeLine = mode ? getModeLine(mode, topic) : null;
 
-  if (responseStyle === "sameCategorySpam") {
-    if (modeLine) return `${getCategoryCallout(category)} ${modeLine} ${getReassurance()}`;
-    return `${getCategoryCallout(category)} ${baseLine} ${getReassurance()}`;
+  if (responseStyle === "sameTopicSpam") {
+    if (modeLine) return `${getTopicCallout(topic, harsher)} ${modeLine} ${getReassurance(harsher)}`;
+    return `${getTopicCallout(topic, harsher)} ${baseLine} ${getReassurance(harsher)}`;
   }
 
   if (responseStyle === "generalSpam") {
-    if (modeLine) return `${getGeneralCallout()} ${modeLine} ${getReassurance()}`;
-    return `${getGeneralCallout()} ${baseLine} ${getReassurance()}`;
+    if (modeLine) return `${getGeneralCallout(harsher)} ${modeLine} ${getReassurance(harsher)}`;
+    return `${getGeneralCallout(harsher)} ${baseLine} ${getReassurance(harsher)}`;
   }
 
   if (modeLine) return modeLine;
@@ -1177,8 +1044,11 @@ function buildSituationResponse(text) {
 }
 
 module.exports = {
+  topicGroups,
   categories,
   modes,
+  normalizeInput,
+  isTopicInCategory,
   buildResponse,
   buildWaveringResponse,
   buildFixResponse,

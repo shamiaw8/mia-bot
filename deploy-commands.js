@@ -1,9 +1,9 @@
 require("dotenv").config();
 
 const { REST, Routes, SlashCommandBuilder } = require("discord.js");
-const { categories, modes } = require("./responses");
+const { groupedCategories, modes } = require("./responses");
 
-const topicChoices = Object.keys(categories).map(key => ({
+const categoryChoices = Object.keys(groupedCategories).map(key => ({
   name: key,
   value: key
 }));
@@ -19,10 +19,16 @@ const commands = [
     .setDescription("get a manifestation identity architect response")
     .addStringOption(option =>
       option
-        .setName("topic")
-        .setDescription("choose a topic")
+        .setName("category")
+        .setDescription("choose a category")
         .setRequired(true)
-        .addChoices(...topicChoices)
+        .addChoices(...categoryChoices)
+    )
+    .addStringOption(option =>
+      option
+        .setName("topic")
+        .setDescription("type a topic within that category, like sp, hair, revision, money, etc.")
+        .setRequired(true)
     )
     .addStringOption(option =>
       option
@@ -94,15 +100,10 @@ const rest = new REST({ version: "10" }).setToken(process.env.TOKEN);
 (async () => {
   try {
     console.log("registering slash commands...");
-
     await rest.put(
-      Routes.applicationGuildCommands(
-        process.env.CLIENT_ID,
-        process.env.GUILD_ID
-      ),
+      Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.GUILD_ID),
       { body: commands }
     );
-
     console.log("slash commands registered.");
   } catch (error) {
     console.error("failed to register commands:", error);

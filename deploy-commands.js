@@ -1,7 +1,10 @@
 require("dotenv").config();
 
 const { REST, Routes, SlashCommandBuilder } = require("discord.js");
-const { topicGroups, modes } = require("./responses");
+const responses = require("./responses");
+
+const topicGroups = responses.topicGroups || {};
+const modes = responses.modes || [];
 
 const categoryChoices = Object.keys(topicGroups).map(category => ({
   name: category,
@@ -100,6 +103,8 @@ const rest = new REST({ version: "10" }).setToken(process.env.TOKEN);
 (async () => {
   try {
     console.log("registering slash commands...");
+    console.log("categories found:", Object.keys(topicGroups));
+    console.log("modes found:", modes);
 
     await rest.put(
       Routes.applicationGuildCommands(

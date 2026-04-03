@@ -2,6 +2,8 @@ require("dotenv").config();
 
 const { Client, GatewayIntentBits } = require("discord.js");
 const {
+  normalizeInput,
+  isTopicInCategory,
   buildResponse,
   buildWaveringResponse,
   buildFixResponse,
@@ -10,6 +12,8 @@ const {
 
 const {
   recordUsage,
+  incrementSpamCallout,
+  resetSpamCalloutCount,
   getUserUsage,
   getUserProfile,
   resetUserMemory,
@@ -25,12 +29,12 @@ const client = new Client({
 function getResponseStyle(usageSnapshot) {
   const {
     totalCount,
-    sameCategoryStreak,
+    sameTopicStreak,
     recentUsesInTenMinutes
   } = usageSnapshot;
 
-  if (sameCategoryStreak >= 3) {
-    return "sameCategorySpam";
+  if (sameTopicStreak >= 3) {
+    return "sameTopicSpam";
   }
 
   if (recentUsesInTenMinutes >= 5) {
@@ -53,16 +57,40 @@ client.on("interactionCreate", async interaction => {
 
   try {
     if (interaction.commandName === "mia") {
-      const topic = interaction.options.getString("topic", true);
+      const rawCategory = interaction.options.getString("category", true);
+      const rawTopic = interaction.options.getString("topic", true);
       const mode = interaction.options.getString("mode", false);
 
-      const usageSnapshot = recordUsage(interaction.user.id, topic);
+      const category = normalizeInput(rawCategory);
+      const topic = normalizeInput(rawTopic);
+
+      if (!isTopicInCategory(category, topic)) {
+        await interaction.reply({
+          content:
+            `that topic doesn’t belong in **${category}**.\n` +
+            `pick a matching topic and try again. don’t make this weird.`,
+          ephemeral: true
+        });
+        return;
+      }
+
+      const usageSnapshot = recordUsage(interaction.user.id, category, topic);
       const responseStyle = getResponseStyle(usageSnapshot);
 
+      let harsher = false;
+
+      if (responseStyle === "sameTopicSpam" || responseStyle === "generalSpam") {
+        const spamCount = incrementSpamCallout(interaction.user.id);
+        harsher = spamCount > 1;
+      } else {
+        resetSpamCalloutCount(interaction.user.id);
+      }
+
       const response = buildResponse({
-        category: topic,
+        topic,
         mode,
-        responseStyle
+        responseStyle,
+        harsher
       });
 
       await interaction.reply({ content: response });
@@ -119,7 +147,7 @@ client.on("interactionCreate", async interaction => {
 
       if (affirmations.length === 0) {
         await interaction.reply({
-          content: "you don’t have any custom affirmations saved yet. go write something powerful instead of staring at the wall.",
+          content: "you don’t have any custom affirmations saved yet. go write something useful instead of staring at the void.",
           ephemeral: true
         });
         return;
@@ -169,7 +197,8 @@ client.on("interactionCreate", async interaction => {
       const usage = getUserUsage(interaction.user.id);
       const profile = getUserProfile(interaction.user.id);
 
-      const favorite = profile.favoriteCategory || "none yet";
+      const favoriteTopic = profile.favoriteTopic || "none yet";
+      const favoriteCategory = profile.favoriteCategory || "none yet";
       const customAffirmCount = Array.isArray(profile.customAffirmations)
         ? profile.customAffirmations.length
         : 0;
@@ -179,8 +208,11 @@ client.on("interactionCreate", async interaction => {
           `**m.i.a. stats**\n` +
           `total uses: ${usage.totalCount}\n` +
           `last category: ${usage.lastCategory || "none"}\n` +
+          `last topic: ${usage.lastTopic || "none"}\n` +
+          `same topic streak: ${usage.sameTopicStreak}\n` +
           `same category streak: ${usage.sameCategoryStreak}\n` +
-          `favorite category: ${favorite}\n` +
+          `favorite category: ${favoriteCategory}\n` +
+          `favorite topic: ${favoriteTopic}\n` +
           `saved affirmations: ${customAffirmCount}`,
         ephemeral: true
       });
@@ -195,6 +227,10 @@ client.on("interactionCreate", async interaction => {
         ephemeral: true
       });
     }
+  }
+});
+
+client.login(process.env.TOKEN);
   }
 });
 

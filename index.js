@@ -226,7 +226,7 @@ client.on("interactionCreate", async interaction => {
         content: "something broke. tragic. check the console.",
         ephemeral: true
       });
-    }
+  
   }
 });
 
